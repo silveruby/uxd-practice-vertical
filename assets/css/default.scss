@@ -1,0 +1,40 @@
+/* OVERRIDING BOOTSTRAP STYLES */
+.row.no-pad {
+	margin-right:0;
+	margin-left:0;
+}
+.row.no-pad > [class*='col-'] {
+	padding-right:0;
+	padding-left:0;
+}
+
+/* PRACTICE VERTICAL TABLE STYLES */
+.practiceVerticalTable{
+
+	.row{
+
+		.col-sm-3{
+			height: 100%;
+
+			ul{
+				height: 100%;
+				list-style: none;
+				
+				
+				height: 768px;
+				display: table;
+				table-style: fixed;
+
+				li{
+					height: 14%;
+					vertical-align: middle;
+					text-align: center;
+					
+					span{
+						display: inline-block;
+					}
+				}
+			}
+		}
+	}
+}

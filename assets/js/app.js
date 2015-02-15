@@ -1,6 +1,6 @@
 (function(){
 
-	var uxdTable = angular.module('uxd.table', [])
+	var uxdTable = angular.module('uxdpv', [])
 
 	// .directive('businessContextAnalysis', function(){
 	// 	return{
@@ -19,13 +19,13 @@
 	// 
 	// });
 	
-	.controller('getPracticeVertical', ['$scope', '$http', function($scope, $http){
+	.controller('getPracticeVertical', ['$http', function($http){
 		var data = this;
-		data = {};
+		data.pv = [];
 		
 		$http.get('/./assets/js/uxd-practice-verticals.json')
-			.success(function(d){
-				data = this.d; 
+			.success(function(results){
+				data.pv = results; 
 			})
 			.error(function(){
 				console.log('fail');

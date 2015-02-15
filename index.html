@@ -3,7 +3,7 @@
 <head>
 	<!-- FRAMEWORK JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="frameworks/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+	<script src="./frameworks/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
 
 	<!-- FRAMEWORK JS -->
@@ -15,26 +15,34 @@
 	<!-- HOMEBREW CSS -->
 	<link rel="stylesheet" href="assets/css/default.css"></link>
 </head>
-<body>
+<body ng-app="uxdpv">
 	<div class="container-fluid">
-		<div class="row no-pad" ng-app="uxd.table">
+		<div class="row no-pad practiceVerticalTable" ng-controller="getPracticeVertical as pvCtrl">
 			<div class="col-xs-6">
 				<div class="row no-pad">
-					<div class="col-sm-3" ng-controller="getPracticeVertical as pv">
+					<div class="col-sm-3">
 						<!-- <business-context-analysis></business-context-analysis> -->
-						{{ pv.data }}
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Business Context Analysis']"><span>{{ areaOfInterest }}</span></li>
+						</ul>
 					</div>
 					<div class="col-sm-3">
 						<!-- <usability-engineering></usability-engineering> -->
-						2
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Usability Engineering']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 					<div class="col-sm-3">
 						<!-- <user-experience-planning></user-experience-planning> -->
-						3
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['User Experience Planning']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 					<div class="col-sm-3">
 						<!-- <content-publishing></content-publishing> -->
-						4
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Content Publishing']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -42,19 +50,27 @@
 				<div class="row no-pad">
 					<div class="col-sm-3">
 						<!-- <information-architecture></information-architecture> -->
-						5
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Information Architecture']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 					<div class="col-sm-3">
 						<!-- <interaction-design></interaction-design> -->
-						6
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Interaction Design']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 					<div class="col-sm-3">
 						<!-- <visual-information-design></visual-information-design> -->
-						7
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Visual & Information Design']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 					<div class="col-sm-3">
 						<!-- <computer-science></computer-science> -->
-						8
+						<ul>
+							<li ng-repeat="areaOfInterest in pvCtrl.pv['Computer Science']">{{ areaOfInterest }}</li>
+						</ul>
 					</div>
 				</div>
 			</div>
