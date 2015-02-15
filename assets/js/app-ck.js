@@ -1,0 +1,1 @@
+(function(){var e=angular.module("uxdpv",[]).controller("getPracticeVertical",["$http",function(e){var t=this;t.firstHalf=[];t.secondHalf=[];e.get("/./assets/js/uxd-practice-verticals.json").success(function(e){t.firstHalf=e.slice(0,4);t.secondHalf=e.slice(4,8);console.log(t.firstHalf)}).error(function(){console.log("fail")})}])})();

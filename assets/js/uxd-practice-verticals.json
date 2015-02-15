@@ -1,65 +1,98 @@
-{
-	"Business Context Analysis" : [ 
-	"Context Map",
-	"Performance Measures",
-	"Product / Service Definitions",
-	"Business Intent",
-	"Mission / Vision",
-	"Business Model"],
-
-	"Usability Engineering" : ["Synthesis", 
-	"Primary Research",
-	"Testing",
-	"Logistics",
-	"Research Design",
-	"Analytics"], 
-
-	"User Experience Planning" : [ 
-	"UX Brief",
-	"Personas",
-	"Engagement Definitions",
-	"UX Management",
-	"UX Strategy",
-	"Research"],
-
-	"Content Publishing" : [ 
-	"Content",
-	"Editing",
-	"Governance",
-	"Content Management",
-	"Content Strategy",
-	"Research / Analytics"],
-
-	"Information Architecture" : [ 
-	"Navigation",
-	"Information Organization",
-	"Information Relationship",
-	"IA Management",
-	"IA Strategy",
-	"Research / Analytics"], 
-
-	"Interaction Design" : [ 
-	"Wireframe",
-	"Interaction",
-	"Patterns",
-	"Conventions",
-	"Device Strategy",
-	"Research / Analytics"],
-
-	"Visual & Information Design" : [ 
-	"Graphics",
-	"Layout",
-	"Style Guide",
-	"Art Direction",
-	"Creative Strategy",
-	"Research / Analytics"],
-
-	"Computer Science" : [ 
-	"Front-end Code",
-	"Database Design",
-	"Server Code",
-	"Infrastructure",
-	"System Architecture",
-	"Research / Analytics"]
-
-} 
+[  
+   {  
+      "Name":"Business Context Analysis",
+      "Definition":"A practice whose goal is understanding the primary domain of activities and is informed by the constraints, influencers, and the scope of the intended human-computer interaction",
+      "Area of Interest":[  
+         "Context Map",
+         "Performance Measures",
+         "Product / Service Definitions",
+         "Business Intent",
+         "Mission / Vision",
+         "Business Model"
+      ]
+   },
+   {  
+      "Name":"Usability Engineering",
+      "Definition":"",
+      "Area of Interest":[  
+         "Synthesis",
+         "Primary Research",
+         "Testing",
+         "Logistics",
+         "Research Design",
+         "Analytics"
+      ]
+   },
+   {  
+      "Name":"User Experience Planning",
+      "Definition":"",
+      "Area of Interest":[  
+         "UX Brief",
+         "Personas",
+         "Engagement Definitions",
+         "UX Management",
+         "UX Strategy",
+         "Research"
+      ]
+   },
+   {  
+      "Name":"Content Publishing",
+      "Definition":"",
+      "Area of Interest":[  
+         "Content",
+         "Editing",
+         "Governance",
+         "Content Management",
+         "Content Strategy",
+         "Research / Analytics"
+      ]
+   },
+   {  
+      "Name":"Information Architecture",
+      "Definition":"",
+      "Area of Interest":[  
+         "Navigation",
+         "Information Organization",
+         "Information Relationship",
+         "IA Management",
+         "IA Strategy",
+         "Research / Analytics"
+      ]
+   },
+   {  
+      "Name":"Interaction Design",
+      "Definition":"",
+      "Area of Interest":[  
+         "Wireframe",
+         "Interaction",
+         "Patterns",
+         "Conventions",
+         "Device Strategy",
+         "Research / Analytics"
+      ]
+   },
+   {  
+      "Name":"Visual & Information Design",
+      "Definition":"",
+      "Area of Interest":[  
+         "Graphics",
+         "Layout",
+         "Style Guide",
+         "Art Direction",
+         "Creative Strategy",
+         "Research / Analytics"
+      ]
+   },
+   {  
+      "Name":"Computer Science",
+      "Definition":"",
+      "Area of Interest":[  
+         "Front-end Code",
+         "Database Design",
+         "Server Code",
+         "Infrastructure",
+         "System Architecture",
+         "Research / Analytics"
+      ]
+   }
+]
