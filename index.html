@@ -8,7 +8,7 @@
 
 	<!-- FRAMEWORK JS -->
 	<script src="./assets/js/app.js"></script>
-	
+
 	<!-- FRAMEWORK CSS -->
 	<link rel="stylesheet" href="frameworks/bootstrap-3.3.2-dist/css/bootstrap.min.css"></link>
 
@@ -18,59 +18,115 @@
 <body ng-app="uxdpv">
 	<div class="container-fluid">
 		<div class="row no-pad practiceVerticalTable" ng-controller="getPracticeVertical as pvCtrl">
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				<div class="row no-pad">
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <business-context-analysis></business-context-analysis> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Business Context Analysis']"><span>{{ areaOfInterest }}</span></li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Business Context Analysis</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Business Context Analysis']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <usability-engineering></usability-engineering> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Usability Engineering']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Usability Engineering</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Usability Engineering']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <user-experience-planning></user-experience-planning> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['User Experience Planning']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>User Experience Planning</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['User Experience Planning']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <content-publishing></content-publishing> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Content Publishing']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Content Publishing</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Content Publishing']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				<div class="row no-pad">
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <information-architecture></information-architecture> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Information Architecture']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Information Architecture</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Information Architecture']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <interaction-design></interaction-design> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Interaction Design']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Interaction Design</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Interaction Design']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <visual-information-design></visual-information-design> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Visual & Information Design']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Visual & Information Design</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Visual & Information Design']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-lg-3">
 						<!-- <computer-science></computer-science> -->
-						<ul>
-							<li ng-repeat="areaOfInterest in pvCtrl.pv['Computer Science']">{{ areaOfInterest }}</li>
-						</ul>
+						<table class='table table-striped table-hover'>
+							<thead>
+								<tr><th>Computer Science</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="areaOfInterest in pvCtrl.pv['Computer Science']">
+									<td><span>{{ areaOfInterest }}</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,9 @@
 /* OVERRIDING BOOTSTRAP STYLES */
+.container-fluid{
+	padding: 0;
+	margin: 0;
+}
+
 .row.no-pad {
 	margin-right:0;
 	margin-left:0;
@@ -13,25 +18,54 @@
 
 	.row{
 
-		.col-sm-3{
-			height: 100%;
+		.col-lg-3{
+
+			table{
+
+				td, th{
+					padding: 0 .5em;
+					text-align: center;
+				}
+
+				thead{
+					height: 50px;
+					width: 100%;
+					display: table;
+					
+					th{
+						height: 100%;
+						display: table-cell;
+						vertical-align: middle;
+					}
+				}
+
+				tbody{
+
+					height: 768px;
+					width: 100%;
+					display: table;
+
+					td{
+						height: 14%;
+						display: table-cell;
+						vertical-align: middle;
+					}
+				}
+			}
 
 			ul{
-				height: 100%;
 				list-style: none;
-				
-				
-				height: 768px;
-				display: table;
-				table-style: fixed;
+				margin: 0;
+				padding: 0;
 
 				li{
-					height: 14%;
-					vertical-align: middle;
+					height: 8em;
 					text-align: center;
-					
+					vertical-align: middle;
+
 					span{
 						display: inline-block;
+						height: inherit;
 					}
 				}
 			}

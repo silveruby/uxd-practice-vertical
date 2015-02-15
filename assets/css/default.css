@@ -1,4 +1,8 @@
 /* OVERRIDING BOOTSTRAP STYLES */
+.container-fluid {
+  padding: 0;
+  margin: 0; }
+
 .row.no-pad {
   margin-right: 0;
   margin-left: 0; }
@@ -8,19 +12,33 @@
   padding-left: 0; }
 
 /* PRACTICE VERTICAL TABLE STYLES */
-.practiceVerticalTable .row .col-sm-3 {
-  height: 100%; }
-  .practiceVerticalTable .row .col-sm-3 ul {
+.practiceVerticalTable .row .col-lg-3 table td, .practiceVerticalTable .row .col-lg-3 table th {
+  padding: 0 .5em;
+  text-align: center; }
+.practiceVerticalTable .row .col-lg-3 table thead {
+  height: 50px;
+  width: 100%;
+  display: table; }
+  .practiceVerticalTable .row .col-lg-3 table thead th {
     height: 100%;
-    list-style: none;
-    height: 768px;
-    display: table;
-    table-style: fixed; }
-    .practiceVerticalTable .row .col-sm-3 ul li {
-      height: 14%;
-      vertical-align: middle;
-      text-align: center; }
-      .practiceVerticalTable .row .col-sm-3 ul li span {
-        display: inline-block; }
-
-/*# sourceMappingURL=default.css.map */
+    display: table-cell;
+    vertical-align: middle; }
+.practiceVerticalTable .row .col-lg-3 table tbody {
+  height: 768px;
+  width: 100%;
+  display: table; }
+  .practiceVerticalTable .row .col-lg-3 table tbody td {
+    height: 14%;
+    display: table-cell;
+    vertical-align: middle; }
+.practiceVerticalTable .row .col-lg-3 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .practiceVerticalTable .row .col-lg-3 ul li {
+    height: 8em;
+    text-align: center;
+    vertical-align: middle; }
+    .practiceVerticalTable .row .col-lg-3 ul li span {
+      display: inline-block;
+      height: inherit; }
