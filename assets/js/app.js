@@ -1,23 +1,15 @@
 (function(){
 
 	var uxdTable = angular.module('uxdpv', [])
-
-	// .directive('businessContextAnalysis', function(){
-	// 	return{
-	// 		restrict: 'E',
-	// 		templateUrl: 'businessContextAnalysis.html',
-	// 		controller: function(){},
-	// 		controllerAs: 'test'
-	// 	}
-	// })
-	// 
-	// .directive('usabilityEngineering', function(){
-	// 
-	// });	
-	// 
-	// .directive('user-experience-planning', function(){
-	// 
-	// });
+	
+	.directive('practiceVerticals', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'practiceVerticals.html',	
+			controller: 'getPracticeVertical', 
+			controllerAs: 'pvCtrl'				
+		}
+	})
 	
 	.controller('getPracticeVertical', ['$http', function($http){
 		var data = this;
@@ -28,10 +20,10 @@
 			.success(function(results){
 				data.firstHalf = results.slice(0,4);
 				data.secondHalf = results.slice(4,8);
-				console.log(data.firstHalf);
 			})
 			.error(function(){
-				console.log('fail');
+				data.firstHalf = undefined;
+				data.secondHalf = undefined;
 			});
 	}]);
 

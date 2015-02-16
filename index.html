@@ -17,42 +17,16 @@
 </head>
 <body ng-app="uxdpv">
 	<div class="container-fluid">
-		<div class="row no-pad practiceVerticalTable" ng-controller="getPracticeVertical as pvCtrl">
-			<div class="col-sm-6">
-				<div class="row no-pad">
-					<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.firstHalf">
-						<!-- <business-context-analysis></business-context-analysis> -->
-						<table class='table table-striped table-hover'>
-							<thead>
-								<tr><th>{{ practiceVertical['Name'] }}</th></tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']">
-									<td><span>{{ areaOfInterest }}</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+		<div class="row no-pad">
+			<div class="col-xs-12">
+				<h1 class="text-center">UX Design Practice Verticals</h1>
 			</div>
-			<div class="col-sm-6">
-				<div class="row no-pad">
-					<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.secondHalf">
-						<!-- <business-context-analysis></business-context-analysis> -->
-						<table class='table table-striped table-hover'>
-							<thead>
-								<tr><th>{{ practiceVertical['Name'] }}</th></tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']">
-									<td><span>{{ areaOfInterest }}</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+		</div>
+		<practice-verticals></practice-verticals> <!-- END PRACTICE VERTICAL ROW -->
+		<div class="row no-pad">
+			<div class="col-xs-12">
+				<h1 class="text-center">UX Design Practice Verticals</h1>
 			</div>
-		</div> <!-- END PRACTICE VERTICAL REPEAT -->
 	</div>
 </body>
 
