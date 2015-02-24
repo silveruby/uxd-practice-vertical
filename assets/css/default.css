@@ -1,4 +1,7 @@
 /* OVERRIDING BOOTSTRAP STYLES */
+body {
+  font-family: 'Roboto', sans-serif; }
+
 .container-fluid {
   padding: 0;
   margin: 0; }
@@ -11,12 +14,24 @@
   padding-right: 0;
   padding-left: 0; }
 
+/* MATERIAL COLORS */
 /* PRACTICE VERTICAL TABLE STYLES */
 .practiceVerticalTable .row .col-lg-3 table {
-  font-size: 1.5em; }
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+  /* TABLE COLORS */
+  /* END PV_BCA */
+  /* END PV_UEP */
+  /* END PV_UEP */
+  /* END PV_CP */
+  /* END PV_IA */
+  /* END PV_ID */
+  /* END PV_VID */
+  /* END PV_CS */ }
   .practiceVerticalTable .row .col-lg-3 table td, .practiceVerticalTable .row .col-lg-3 table th {
     padding: 0 .5em;
-    text-align: center; }
+    text-align: center;
+    border: none; }
   .practiceVerticalTable .row .col-lg-3 table thead {
     height: 100px;
     width: 100%;
@@ -33,6 +48,138 @@
       height: 14%;
       display: table-cell;
       vertical-align: middle; }
+    .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(1) {
+      background-color: #FAFAFA; }
+    .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(2) {
+      background-color: #F5F5F5; }
+    .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(3) {
+      background-color: #EEEEEE; }
+    .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(4) {
+      background-color: #E0E0E0; }
+    .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(5) {
+      background-color: #BDBDBD; }
+    .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(6) {
+      background-color: #9E9E9E; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca thead tr {
+    background-color: #B71C1C;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(1):active {
+    background-color: #FFEBEE; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(2):active {
+    background-color: #FFCDD2; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(3):active {
+    background-color: #EF9A9A; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(4):active {
+    background-color: #E57373; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(5):active {
+    background-color: #EF5350; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_bca tbody tr:nth-child(6):active {
+    background-color: #F44336; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue thead tr {
+    background-color: #4A148C;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(1):active {
+    background-color: #F3E5F5; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(2):active {
+    background-color: #E1BEE7; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(3):active {
+    background-color: #CE93D8; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(4):active {
+    background-color: #BA68C8; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(5):active {
+    background-color: #AB47BC; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ue tbody tr:nth-child(6):active {
+    background-color: #9C27B0; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep thead tr {
+    background-color: #1A237E;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(1):active {
+    background-color: #E8EAF6; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(2):active {
+    background-color: #C5CAE9; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(3):active {
+    background-color: #9FA8DA; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(4):active {
+    background-color: #7986CB; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(5):active {
+    background-color: #5C6BC0; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_uep tbody tr:nth-child(6):active {
+    background-color: #3F51B5; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp thead tr {
+    background-color: #01579B;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(1):active {
+    background-color: #E1F5FE; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(2):active {
+    background-color: #B3E5FC; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(3):active {
+    background-color: #81D4FA; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(4):active {
+    background-color: #4FC3F7; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(5):active {
+    background-color: #29B6F6; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cp tbody tr:nth-child(6):active {
+    background-color: #03A9F4; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia thead tr {
+    background-color: #004D40;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(1):active {
+    background-color: #E0F2F1; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(2):active {
+    background-color: #B2DFDB; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(3):active {
+    background-color: #80CBC4; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(4):active {
+    background-color: #4DB6AC; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(5):active {
+    background-color: #26A69A; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_ia tbody tr:nth-child(6):active {
+    background-color: #009688; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id thead tr {
+    background-color: #33691E;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(1):active {
+    background-color: #F1F8E9; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(2):active {
+    background-color: #DCEDC8; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(3):active {
+    background-color: #C5E1A5; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(4):active {
+    background-color: #AED581; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(5):active {
+    background-color: #9CCC65; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_id tbody tr:nth-child(6):active {
+    background-color: #8BC34A; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid thead tr {
+    background-color: #F57F17;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(1):active {
+    background-color: #FFFDE7; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(2):active {
+    background-color: #FFF9C4; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(3):active {
+    background-color: #FFF59D; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(4):active {
+    background-color: #FFF176; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(5):active {
+    background-color: #FFEE58; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_vid tbody tr:nth-child(6):active {
+    background-color: #FFEB3B; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs thead tr {
+    background-color: #E65100;
+    color: #FFF; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(1):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(1):active {
+    background-color: #FFF3E0; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(2):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(2):active {
+    background-color: #FFE0B2; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(3):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(3):active {
+    background-color: #FFCC80; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(4):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(4):active {
+    background-color: #FFB74D; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(5):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(5):active {
+    background-color: #FFA726; }
+  .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(6):hover, .practiceVerticalTable .row .col-lg-3 table.pv_cs tbody tr:nth-child(6):active {
+    background-color: #FF9800; }
 .practiceVerticalTable .row .col-lg-3 ul {
   list-style: none;
   margin: 0;

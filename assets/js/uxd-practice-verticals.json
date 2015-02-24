@@ -1,98 +1,106 @@
 [  
-   {  
-      "Name":"Business Context Analysis",
-      "Definition":"A practice whose goal is understanding the primary domain of activities and is informed by the constraints, influencers, and the scope of the intended human-computer interaction",
-      "Area of Interest":[  
-         "Context Map",
-         "Performance Measures",
-         "Product / Service Definitions",
-         "Business Intent",
-         "Mission / Vision",
-         "Business Model"
-      ]
-   },
-   {  
-      "Name":"Usability Engineering",
-      "Definition":"A field of research that studies how human behavior and situational context impact the design of effective human-computer interactions",
-      "Area of Interest":[  
-         "Synthesis",
-         "Primary Research",
-         "Testing",
-         "Logistics",
-         "Research Design",
-         "Analytics"
-      ]
-   },
-   {  
-      "Name":"User Experience Planning",
-      "Definition":"A practice that creates a strategy and plan to enable meaningful human-computer interactions and optimal engagement across digital-media channels",
-      "Area of Interest":[  
-         "UX Brief",
-         "Personas",
-         "Engagement Definitions",
-         "UX Management",
-         "UX Strategy",
-         "Research"
-      ]
-   },
-   {  
-      "Name":"Content Publishing",
-      "Definition":"A practice that creates and distributes consumable communications",
-      "Area of Interest":[  
-         "Content",
-         "Editing",
-         "Governance",
-         "Content Management",
-         "Content Strategy",
-         "Research / Analytics"
-      ]
-   },
-   {  
-      "Name":"Information Architecture",
-      "Definition":"A practice that organizes and relates information in a way that simplifies the way people navigate and use content in Web environments",
-      "Area of Interest":[  
-         "Navigation",
-         "Information Organization",
-         "Information Relationship",
-         "IA Management",
-         "IA Strategy",
-         "Research / Analytics"
-      ]
-   },
-   {  
-      "Name":"Interaction Design",
-      "Definition":"A practice that develops the sensory-afforded structures and behaviors of an interactive object",
-      "Area of Interest":[  
-         "Wireframe",
-         "Interaction",
-         "Patterns",
-         "Conventions",
-         "Device Strategy",
-         "Research / Analytics"
-      ]
-   },
-   {  
-      "Name":"Visual & Information Design",
-      "Definition":"A practice whose goal is to achieve functional, pleasurable, and meaningful visual aesthetics in support of interactive objects’ effective communication",
-      "Area of Interest":[  
-         "Graphics",
-         "Layout",
-         "Style Guide",
-         "Art Direction",
-         "Creative Strategy",
-         "Research / Analytics"
-      ]
-   },
-   {  
-      "Name":"Computer Science",
-      "Definition":"A scientific and practical approach to computation and its applications",
-      "Area of Interest":[  
-         "Front-end Code",
-         "Database Design",
-         "Server Code",
-         "Infrastructure",
-         "System Architecture",
-         "Research / Analytics"
-      ]
-   }
+{  
+	"Name":"Business Context Analysis",
+	"ClassName":"pv_bca",
+	"Definition":"A practice whose goal is understanding the primary domain of activities and is informed by the constraints, influencers, and the scope of the intended human-computer interaction",
+	"Area of Interest":[  
+	"Context Map",
+	"Performance Measures",
+	"Product / Service Definitions",
+	"Business Intent",
+	"Mission / Vision",
+	"Business Model"
+	]
+},
+{  
+	"Name":"Usability Engineering",
+	"ClassName":"pv_ue",
+	"Definition":"A field of research that studies how human behavior and situational context impact the design of effective human-computer interactions",
+	"Area of Interest":[  
+	"Synthesis",
+	"Primary Research",
+	"Testing",
+	"Logistics",
+	"Research Design",
+	"Analytics"
+	]
+},
+{  
+	"Name":"User Experience Planning",
+	"ClassName":"pv_uep",
+	"Definition":"A practice that creates a strategy and plan to enable meaningful human-computer interactions and optimal engagement across digital-media channels",
+	"Area of Interest":[  
+	"UX Brief",
+	"Personas",
+	"Engagement Definitions",
+	"UX Management",
+	"UX Strategy",
+	"Research"
+	]
+},
+{  
+	"Name":"Content Publishing",
+	"ClassName":"pv_cp",
+	"Definition":"A practice that creates and distributes consumable communications",
+	"Area of Interest":[  
+	"Content",
+	"Editing",
+	"Governance",
+	"Content Management",
+	"Content Strategy",
+	"Research / Analytics"
+	]
+},
+{  
+	"Name":"Information Architecture",
+	"ClassName":"pv_ia",
+	"Definition":"A practice that organizes and relates information in a way that simplifies the way people navigate and use content in Web environments",
+	"Area of Interest":[  
+	"Navigation",
+	"Information Organization",
+	"Information Relationship",
+	"IA Management",
+	"IA Strategy",
+	"Research / Analytics"
+	]
+},
+{  
+	"Name":"Interaction Design",
+	"ClassName":"pv_id",
+	"Definition":"A practice that develops the sensory-afforded structures and behaviors of an interactive object",
+	"Area of Interest":[  
+	"Wireframe",
+	"Interaction",
+	"Patterns",
+	"Conventions",
+	"Device Strategy",
+	"Research / Analytics"
+	]
+},
+{  
+	"Name":"Visual & Information Design",
+	"ClassName":"pv_vid",
+	"Definition":"A practice whose goal is to achieve functional, pleasurable, and meaningful visual aesthetics in support of interactive objects’ effective communication",
+	"Area of Interest":[  
+	"Graphics",
+	"Layout",
+	"Style Guide",
+	"Art Direction",
+	"Creative Strategy",
+	"Research / Analytics"
+	]
+},
+{  
+	"Name":"Computer Science",
+	"ClassName":"pv_cs",
+	"Definition":"A scientific and practical approach to computation and its applications",
+	"Area of Interest":[  
+	"Front-end Code",
+	"Database Design",
+	"Server Code",
+	"Infrastructure",
+	"System Architecture",
+	"Research / Analytics"
+	]
+}
 ]
