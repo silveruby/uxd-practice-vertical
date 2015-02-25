@@ -26,6 +26,10 @@
 				data.secondHalf = undefined;
 			});
 	}]);
+	
+	// .controller('isAreaOfInterestSelected', [$scope, function($scope){
+	// 	return true;
+	// }]);
 
 })();
 

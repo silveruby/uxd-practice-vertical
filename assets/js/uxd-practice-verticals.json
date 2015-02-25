@@ -3,39 +3,39 @@
 	"Name":"Business Context Analysis",
 	"ClassName":"pv_bca",
 	"Definition":"A practice whose goal is understanding the primary domain of activities and is informed by the constraints, influencers, and the scope of the intended human-computer interaction",
-	"Area of Interest":[  
-	"Context Map",
-	"Performance Measures",
-	"Product / Service Definitions",
-	"Business Intent",
-	"Mission / Vision",
-	"Business Model"
-	]
+	"Area of Interest":[
+	{"Name": "Context Map", "isSelected": false },
+	{"Name": "Performance Measures", "isSelected": false },
+	{"Name": "Product / Service Definitions", "isSelected": false },
+	{"Name": "Business Intent", "isSelected": false },
+	{"Name": "Mission / Vision", "isSelected": false },
+	{"Name": "Business Model", "isSelected": false }
+]
 },
 {  
 	"Name":"Usability Engineering",
 	"ClassName":"pv_ue",
 	"Definition":"A field of research that studies how human behavior and situational context impact the design of effective human-computer interactions",
-	"Area of Interest":[  
-	"Synthesis",
-	"Primary Research",
-	"Testing",
-	"Logistics",
-	"Research Design",
-	"Analytics"
-	]
+	"Area of Interest":[
+	{"Name": "Synthesis", "isSelected": false },
+	{"Name": "Primary Research", "isSelected": false },
+	{"Name": "Testing", "isSelected": false },
+	{"Name": "Logistics", "isSelected": false },
+	{"Name": "Research Design", "isSelected": false },
+	{"Name": "Analytics", "isSelected": false }
+]
 },
 {  
 	"Name":"User Experience Planning",
 	"ClassName":"pv_uep",
 	"Definition":"A practice that creates a strategy and plan to enable meaningful human-computer interactions and optimal engagement across digital-media channels",
 	"Area of Interest":[  
-	"UX Brief",
-	"Personas",
-	"Engagement Definitions",
-	"UX Management",
-	"UX Strategy",
-	"Research"
+	{"Name": "UX Brief", "isSelected": false },
+	{"Name": "Personas", "isSelected": false },
+	{"Name": "Engagement Definitions", "isSelected": false },
+	{"Name": "UX Management", "isSelected": false },
+	{"Name": "UX Strategy", "isSelected": false },
+	{"Name": "Research", "isSelected": false }
 	]
 },
 {  
@@ -43,12 +43,12 @@
 	"ClassName":"pv_cp",
 	"Definition":"A practice that creates and distributes consumable communications",
 	"Area of Interest":[  
-	"Content",
-	"Editing",
-	"Governance",
-	"Content Management",
-	"Content Strategy",
-	"Research / Analytics"
+	{"Name": "Content", "isSelected": false },
+	{"Name": "Editing", "isSelected": false },
+	{"Name": "Governance", "isSelected": false },
+	{"Name": "Content Management", "isSelected": false },
+	{"Name": "Content Strategy", "isSelected": false },
+	{"Name": "Research / Analytics", "isSelected": false }
 	]
 },
 {  

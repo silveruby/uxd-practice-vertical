@@ -1,15 +1,14 @@
 <div class="row no-pad practiceVerticalTable" ng-controller="getPracticeVertical as pvCtrl">
 	<div class="col-md-6">
 		<div class="row no-pad">
-			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.firstHalf">
-				<!-- <business-context-analysis></business-context-analysis> -->
+			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.firstHalf" ng-model="practiceVertical">
 				<table class="table table-hover {{ practiceVertical['ClassName'] }}">
 					<thead>
 						<tr><th>{{ practiceVertical['Name'] }}</th></tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']">
-							<td><span>{{ areaOfInterest }}</span></td>
+						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" ng-class="{ isSelected: areaOfInterest['isSelected'] }">
+							<td><span>{{ areaOfInterest['Name'] }}</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -18,8 +17,7 @@
 	</div>
 	<div class="col-md-6">
 		<div class="row no-pad">
-			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.secondHalf">
-				<!-- <business-context-analysis></business-context-analysis> -->
+			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.secondHalf" ng-model="practiceVertical">
 				<table class="table table-hover {{ practiceVertical['ClassName'] }}">
 					<thead>
 						<tr><th>{{ practiceVertical['Name'] }}</th></tr>
