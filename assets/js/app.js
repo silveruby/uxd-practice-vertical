@@ -8,10 +8,10 @@
 			templateUrl: 'practiceVerticals.html',	
 			controller: 'getPracticeVertical', 
 			controllerAs: 'pvCtrl'				
-		}
+		};
 	})
 	
-	.controller('getPracticeVertical', ['$http', function($http){
+	.controller('getPracticeVertical', ['$scope', '$http', function($scope, $http){
 		var data = this;
 		data.firstHalf = [];
 		data.secondHalf = [];
@@ -25,11 +25,11 @@
 				data.firstHalf = undefined;
 				data.secondHalf = undefined;
 			});
+			
+		$scope.toggleSelected = function(areaOfInterest){
+			areaOfInterest.isSelected = !areaOfInterest.isSelected;
+		};
 	}]);
-	
-	// .controller('isAreaOfInterestSelected', [$scope, function($scope){
-	// 	return true;
-	// }]);
 
 })();
 
