@@ -4,12 +4,12 @@
 	"ClassName":"pv_bca",
 	"Definition":"A practice whose goal is understanding the primary domain of activities and is informed by the constraints, influencers, and the scope of the intended human-computer interaction",
 	"Area of Interest":[
-	{"Name": "Context Map", "isSelected": false },
-	{"Name": "Performance Measures", "isSelected": false },
-	{"Name": "Product / Service Definitions", "isSelected": false },
-	{"Name": "Business Intent", "isSelected": false },
-	{"Name": "Mission / Vision", "isSelected": false },
-	{"Name": "Business Model", "isSelected": false }
+	{"Name": "Context Map", "ClassName": "pv_bca_cm", "isSelected": false },
+	{"Name": "Performance Measures", "ClassName": "pv_bca_pm", "isSelected": false },
+	{"Name": "Product / Service Definitions", "ClassName": "pv_bca_psd", "isSelected": false },
+	{"Name": "Business Intent", "ClassName": "pv_bca_bi", "isSelected": false },
+	{"Name": "Mission / Vision", "ClassName": "pv_bca_mv", "isSelected": false },
+	{"Name": "Business Model", "ClassName": "pv_bca_bm", "isSelected": false }
 ]
 },
 {  
@@ -17,12 +17,12 @@
 	"ClassName":"pv_ue",
 	"Definition":"A field of research that studies how human behavior and situational context impact the design of effective human-computer interactions",
 	"Area of Interest":[
-	{"Name": "Synthesis", "isSelected": false },
-	{"Name": "Primary Research", "isSelected": false },
-	{"Name": "Testing", "isSelected": false },
-	{"Name": "Logistics", "isSelected": false },
-	{"Name": "Research Design", "isSelected": false },
-	{"Name": "Analytics", "isSelected": false }
+	{"Name": "Synthesis", "ClassName": "pv_ue_s", "isSelected": false },
+	{"Name": "Primary Research", "ClassName": "pv_ue_pr", "isSelected": false },
+	{"Name": "Testing", "ClassName": "pv_ue_t", "isSelected": false },
+	{"Name": "Logistics", "ClassName": "pv_ue_l", "isSelected": false },
+	{"Name": "Research Design", "ClassName": "pv_ue_rd", "isSelected": false },
+	{"Name": "Analytics", "ClassName": "pv_ue_a", "isSelected": false }
 ]
 },
 {  
@@ -30,12 +30,12 @@
 	"ClassName":"pv_uep",
 	"Definition":"A practice that creates a strategy and plan to enable meaningful human-computer interactions and optimal engagement across digital-media channels",
 	"Area of Interest":[  
-	{"Name": "UX Brief", "isSelected": false },
-	{"Name": "Personas", "isSelected": false },
-	{"Name": "Engagement Definitions", "isSelected": false },
-	{"Name": "UX Management", "isSelected": false },
-	{"Name": "UX Strategy", "isSelected": false },
-	{"Name": "Research", "isSelected": false }
+	{"Name": "UX Brief", "ClassName": "pv_uep_uxb", "isSelected": false },
+	{"Name": "Personas", "ClassName": "pv_uep_p", "isSelected": false },
+	{"Name": "Engagement Definitions", "ClassName": "pv_uep_ed", "isSelected": false },
+	{"Name": "UX Management", "ClassName": "pv_uep_uxm", "isSelected": false },
+	{"Name": "UX Strategy", "ClassName": "pv_uep_uxs", "isSelected": false },
+	{"Name": "Research", "ClassName": "pv_uep_r", "isSelected": false }
 	]
 },
 {  
@@ -43,12 +43,12 @@
 	"ClassName":"pv_cp",
 	"Definition":"A practice that creates and distributes consumable communications",
 	"Area of Interest":[  
-	{"Name": "Content", "isSelected": false },
-	{"Name": "Editing", "isSelected": false },
-	{"Name": "Governance", "isSelected": false },
-	{"Name": "Content Management", "isSelected": false },
-	{"Name": "Content Strategy", "isSelected": false },
-	{"Name": "Research / Analytics", "isSelected": false }
+	{"Name": "Content", "ClassName": "pv_cp_c", "isSelected": false },
+	{"Name": "Editing", "ClassName": "pv_cp_e", "isSelected": false },
+	{"Name": "Governance", "ClassName": "pv_cp_g", "isSelected": false },
+	{"Name": "Content Management", "ClassName": "pv_cp_cm", "isSelected": false },
+	{"Name": "Content Strategy", "ClassName": "pv_cp_cs", "isSelected": false },
+	{"Name": "Research / Analytics", "ClassName": "pv_cp_ra", "isSelected": false }
 	]
 },
 {  

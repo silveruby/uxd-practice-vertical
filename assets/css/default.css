@@ -15,6 +15,38 @@ body {
   padding-left: 0; }
 
 /* MATERIAL COLORS */
+/* KEYFRAME */
+@keyframes ripple {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+    background-color: #FFF; }
+  100% {
+    transform: scale(1.5);
+    opacity: 0; } }
+@-webkit-keyframes ripple {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(0);
+    background-color: #FFF; }
+  100% {
+    -webkit-transform: scale(1.5);
+    opacity: 0; } }
+.table tr .ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; }
+
+.table tr.ng-click-active {
+  border: 1px solid #000; }
+
+.table tr td .ripple.selected {
+  -webkit-animation: ripple 0.5s 1 ease-out;
+  animation: ripple 0.5s 1 ease-out; }
+
 /* PRACTICE VERTICAL TABLE STYLES */
 .practiceVerticalTable .row .col-lg-3 table {
   font-family: 'Roboto Condensed', sans-serif;
@@ -31,7 +63,10 @@ body {
   .practiceVerticalTable .row .col-lg-3 table td, .practiceVerticalTable .row .col-lg-3 table th {
     padding: 0 .5em;
     text-align: center;
-    border: none; }
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; }
   .practiceVerticalTable .row .col-lg-3 table thead {
     height: 100px;
     width: 100%;
@@ -60,6 +95,8 @@ body {
       background-color: #BDBDBD; }
     .practiceVerticalTable .row .col-lg-3 table tbody tr:nth-child(6) {
       background-color: #9E9E9E; }
+    .practiceVerticalTable .row .col-lg-3 table tbody td:hover {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .practiceVerticalTable .row .col-lg-3 table.pv_bca thead tr {
     background-color: #B71C1C;
     color: #FFF; }

@@ -26,8 +26,31 @@
 				data.secondHalf = undefined;
 			});
 			
-		$scope.toggleSelected = function(areaOfInterest){
+		$scope.toggleSelected = function(event, areaOfInterest){
+
+			var areaBox, x, y, w, h, rect, after;
+			
+			areaBox = document.querySelector("." + areaOfInterest.ClassName);
+			
+			rect = areaBox.getBoundingClientRect();
+			x = event.clientX - rect.left;
+			y = event.clientY - rect.top;
+			
+			w = $("." + areaOfInterest.ClassName + " .ripple").width();
+			h = $("." + areaOfInterest.ClassName + " .ripple").height();
+			
+			x = x - (w/2);
+			y = y - (h/2);
+			
+			
+			$("." + areaOfInterest.ClassName + " .ripple").css({  top : y + 'px', left : x + 'px' });
+			
 			areaOfInterest.isSelected = !areaOfInterest.isSelected;
+			
+			
+			$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
+			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
+			
 		};
 	}]);
 
