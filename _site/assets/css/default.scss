@@ -1,0 +1,106 @@
+/* MATERIAL COLORS */
+$material_grey_50: #FAFAFA;
+$material_grey_100: #F5F5F5;
+$material_grey_200: #EEEEEE;
+$material_grey_300: #E0E0E0;
+$material_grey_400: #BDBDBD;
+$material_grey_500: #9E9E9E;
+$material_grey_900: #212121;
+$material_red_50: #FFEBEE;
+$material_red_100: #FFCDD2;
+$material_red_200: #EF9A9A;
+$material_red_300: #E57373;
+$material_red_400: #EF5350;
+$material_red_500: #F44336;
+$material_red_900: #B71C1C;
+$material_purple_50: #F3E5F5;
+$material_purple_100: #E1BEE7;
+$material_purple_200: #CE93D8;
+$material_purple_300: #BA68C8;
+$material_purple_400: #AB47BC;
+$material_purple_500: #9C27B0;
+$material_purple_900: #4A148C;
+$material_indigo_50: #E8EAF6;
+$material_indigo_100: #C5CAE9;
+$material_indigo_200: #9FA8DA;
+$material_indigo_300: #7986CB;
+$material_indigo_400: #5C6BC0;
+$material_indigo_500: #3F51B5;
+$material_indigo_900: #1A237E;
+$material_light_blue_50: #E1F5FE;
+$material_light_blue_100: #B3E5FC;
+$material_light_blue_200: #81D4FA;
+$material_light_blue_300: #4FC3F7;
+$material_light_blue_400: #29B6F6;
+$material_light_blue_500: #03A9F4;
+$material_light_blue_900: #01579B;
+$material_teal_50: #E0F2F1;
+$material_teal_100: #B2DFDB;
+$material_teal_200: #80CBC4;
+$material_teal_300: #4DB6AC;
+$material_teal_400: #26A69A;
+$material_teal_500: #009688;
+$material_teal_900: #004D40;
+$material_light_green_50: #F1F8E9;
+$material_light_green_100: #DCEDC8;
+$material_light_green_200: #C5E1A5;
+$material_light_green_300: #AED581;
+$material_light_green_400: #9CCC65;
+$material_light_green_500: #8BC34A;
+$material_light_green_900: #33691E;
+$material_yellow_50: #FFFDE7;
+$material_yellow_100: #FFF9C4;
+$material_yellow_200: #FFF59D;
+$material_yellow_300: #FFF176;
+$material_yellow_400: #FFEE58;
+$material_yellow_500: #FFEB3B;
+$material_yellow_900: #F57F17;
+$material_orange_50: #FFF3E0;
+$material_orange_100: #FFE0B2;
+$material_orange_200: #FFCC80;
+$material_orange_300: #FFB74D;
+$material_orange_400: #FFA726;
+$material_orange_500: #FF9800;
+$material_orange_900: #E65100;
+
+/* OVERRIDING BOOTSTRAP STYLES */
+body{
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.popover-content{
+	font-size: .9em;
+}
+
+.container-fluid{
+	padding: 0;
+	margin: 0;
+}
+
+.row.no-pad {
+	margin-right: 0;
+	margin-left: 0;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+.row.no-pad > [class*='col-'] {
+	padding-right:0;
+	padding-left:0;
+}
+
+/* NAVBAR */
+nav.navbar{
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* TOP */
+.row.top{
+	margin-top: 8em;
+}
+
+/* FOOTER */
+.footer{
+	width: 100%;
+	height: 60px;
+	background-color: #f5f5f5;
+}
