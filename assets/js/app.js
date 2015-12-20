@@ -1,6 +1,7 @@
 (function(){
 
-	var uxdTable = angular.module('uxdpv', [])
+	angular.module('uxdpv', [])
+
 
 	.directive('practiceVerticals', function(){
 		return {
@@ -9,19 +10,13 @@
 		};
 	})
 	
-	// .directive('popOver', ['$timeout', function ($timeout) {
-	// 	return {
-	// 		link: function ($scope) {
-	//             $scope.$on('dataloaded', function () {
-	//                 $timeout(function () {
-	//                     $('[data-toggle="popover"]').popover();
-	// 					console.log("test");
-	//                 }, 0, false);
-	//             });
-	//         }	
-	// 	};		
-	// 	
-	// }])
+	.directive('customMessage', function(){
+		return{
+			restrict: 'E',
+			templateURL: 'customMessages.html'
+		};
+
+	})
 
 	/**
 	 * Controller to get Practice Vertical JSON into View
@@ -47,6 +42,8 @@
 		*/
 		$scope.toggleSelected = function(event, areaOfInterest){
 
+
+			// Generate ripple effect
 			var areaBox, x, y, w, h, rect;
 
 			areaBox = document.querySelector("." + areaOfInterest.ClassName);
@@ -64,11 +61,12 @@
 
 			$("." + areaOfInterest.ClassName + " .ripple").css({  top : y + 'px', left : x + 'px' });
 
-			areaOfInterest.isSelected = !areaOfInterest.isSelected;
-
 
 			$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
 			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
+
+			// Update isSelected
+			areaOfInterest.isSelected = !areaOfInterest.isSelected;
 
 		};
 
