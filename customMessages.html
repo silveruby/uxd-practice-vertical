@@ -1,6 +1,28 @@
-<div class="row no-pad customMessagesSection" ng-controller="getCustomMessage as cm">
-	<div class="col-xs-12 col-md-offset-4 col-md-4 text-center">
-	  <h4>Select your practice areas to create your own visual</h4>
-	  <span class="glyphicon glyphicon-chevron-down"></span>
+<div class="row no-pad customMessagesSection" ng-controller="setCustomMessages as cm">
+	<div class="col-xs-12 col-md-offset-4 col-md-4 jumbotron text-center {{ cm.current_state }}">
+		<div class="s1Default fade fadein">
+            <h4>Select your areas and create your own practice vertical</h4>
+        </div>
+        <div class="s2GenerateLink fade">  
+            <form>
+                <div class="form-group">
+                    <label>Enter your name and email address</label>
+                    <input type="name" class="form-control text-center" placeholder="Name"></input>
+                    <input type="email" class="form-control text-center" placeholder="Email address"></input>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control" ng-click="cm.generateLink()">
+                        Generate your practice vertical
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="s3Personal fade">
+            <h4>Ruby's Practice Vertical <mark>link/url</mark></h4>
+            <div>Share on Twitter, Facebook or LinkedIn</div>
+        </div>
 	</div>
+    <div class="col-xs-12 text-center">
+        <span class="glyphicon glyphicon-chevron-down"></span> 
+    </div>
 </div>

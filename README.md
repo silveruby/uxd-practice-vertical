@@ -26,11 +26,30 @@ Link: http://www.rubyzheng.com/projects/uxdpv
 	c. Use tag name or attributes instead of class or comments
 	d. Attach 'ng-attr' for attribute binding
 
-
-
-
-
 ---
+
+### Setup
+
+#### Local Machine 
+
+1. Install vagrant
+
+		$ vagrant init hashicorp/precise32
+		
+2. Get updates
+
+		$ sudo apt-get update
+		$ sudo apt-get upgrade
+
+3. Get software
+
+		$ Flask
+		$ SQLAlchemy
+		$ Postgre SQL
+		$ Apache
+
+
+. 
 
 ## Updates
 

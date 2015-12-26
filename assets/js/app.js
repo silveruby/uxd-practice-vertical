@@ -1,46 +1,107 @@
 (function(){
 
-	angular.module('uxdpv', [])
+	var uxdpv = angular.module('uxdpv', []);
 
 
-	.directive('practiceVerticals', function(){
+	uxdpv.directive('practiceVerticals', function(){
 		return {
 			restrict: 'E',
 			templateUrl: 'practiceVerticals.html'
 		};
-	})
+	});
 	
-	.directive('customMessage', function(){
+	uxdpv.directive('customMessages', function(){
 		return{
 			restrict: 'E',
-			templateURL: 'customMessages.html'
+			templateUrl: 'customMessages.html'
 		};
 
-	})
+	});
+
+	/**
+	 * Factory to store shared data between controllers
+	*/
+	uxdpv.service('selectionData', function(){
+
+		var selected_count = 0;
+
+		return{
+	    	getSelectedCount: function(){
+	            return selected_count;
+	        },
+	        incrementSelectedCount: function(){
+	        	selected_count++;
+	        },
+	        decrementSelectedCount: function(){
+	        	selected_count != 0 ? selected_count-- : selected_count; 
+	        },
+	        isSelected: function(){
+	        	return selected_count > 0 ? true : false;
+	        }
+
+	    };
+	});
+
+	/**
+	 * Controller to set Custom Messages
+	*/
+	uxdpv.controller('setCustomMessages', ['$rootScope', 'selectionData', function($rootScope, selectionData){
+		var vm = this;
+		vm.current_state = 'default';
+
+		$rootScope.$on('updateCustomMessages', function(event){
+
+			if (selectionData.isSelected() && vm.current_state == 'default'){
+
+				// switch state
+				vm.current_state = 'generate-link';
+
+				// fade in generate link
+				$('.s2GenerateLink').addClass('fadein');	
+
+				// destroy emit event 'updateCustomMessages'
+				$rootScope.$destroy('updateCustomMessages');		
+			}
+
+		});
+
+		vm.generateLink = function(event){
+
+			// switch state
+			vm.current_state = 'personal-link';
+
+			// fade in personal link
+			$('.s3Personal').addClass('fadein');				
+		}
+
+	}]);
 
 	/**
 	 * Controller to get Practice Vertical JSON into View
 	*/
-	.controller('getPracticeVertical', ['$scope', '$http', function($scope, $http){
-		var data = this;
-		data.firstHalf = [];
-		data.secondHalf = [];
+	uxdpv.controller('getPracticeVertical', ['$rootScope', '$http', 'selectionData', function($rootScope, $http, selectionData){
+		
+		var vm = this;
 
+		vm.firstHalf = [];
+		vm.secondHalf = [];
+
+		// Get JSON object to populate practice vertical
 		$http.get('/./assets/js/uxd-practice-verticals.json')
 		.success(function(results){
-			data.firstHalf = results.slice(0,4);
-			data.secondHalf = results.slice(4,8);
+			vm.firstHalf = results.slice(0,4);
+			vm.secondHalf = results.slice(4,8);
 		})
 		.error(function(){
-			data.firstHalf = undefined;
-			data.secondHalf = undefined;
+			vm.firstHalf = undefined;
+			vm.secondHalf = undefined;
 		});
 
 		/**
 		 * Set toggle behavior on individual area of interest
 		 * This is to be called with ng-click
 		*/
-		$scope.toggleSelected = function(event, areaOfInterest){
+		vm.toggleSelected = function(event, areaOfInterest){
 
 
 			// Generate ripple effect
@@ -65,8 +126,11 @@
 			$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
 			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
 
-			// Update isSelected
+			// Update isSelected and global selected_count
 			areaOfInterest.isSelected = !areaOfInterest.isSelected;
+			areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+
+			$rootScope.$emit('updateCustomMessages');
 
 		};
 

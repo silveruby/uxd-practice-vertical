@@ -92,9 +92,47 @@ body{
 		margin: 2em 0;
 	}
 
-	&.generate-own{
-		margin: 2em 0 1em 0;
+	&.customMessagesSection{
+		margin: 1em 0 2em 0;
 
+		.jumbotron{
+			padding: 1.5em;
+		}
+
+		.default{
+			.s1Default{
+				visibility: visible;
+			}
+			.s2GenerateLink, .s3Personal{
+				visibility: hidden;
+				height: 0;
+			}
+		}
+		.generate-link{
+			.s2GenerateLink{
+				visibility: visible;
+			}
+			.s1Default, .s3Personal{
+				visibility: hidden;
+				height: 0;
+			}			
+		}
+		.personal-link{
+			.s3Personal{
+				visibility: visible;
+			}
+			.s1Default, .s2GenerateLink{
+				visibility: hidden;
+				height: 0;
+			}	
+		}
+
+		.s2GenerateLink{
+			.form-group{
+				padding: 0 10%;
+				margin: 0;
+			}
+		}
 	}
 
 	&.learn-more{
@@ -117,4 +155,22 @@ nav.navbar{
 	width: 100%;
 	height: 60px;
 	background-color: #f5f5f5;
+}
+
+/*ANIMATION*/
+
+.fade{
+    -webkit-opacity: 0;
+  	-moz-opacity: 0;
+  	-ms-opacity: 0;
+  	-o-opacity: 0;	
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opactiy 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;  
+}
+.fadein{
+    opacity: 1;
 }

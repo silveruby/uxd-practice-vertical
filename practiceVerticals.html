@@ -12,7 +12,7 @@
 						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" 
 							class="{{areaOfInterest['ClassName']}}"
 							ng-class="{ isSelected: areaOfInterest['isSelected'], isNotSelected: !areaOfInterest['isSelected']}"
-							ng-click="toggleSelected($event, areaOfInterest)">
+							ng-click="pvCtrl.toggleSelected($event, areaOfInterest)">
 							<td>
 								<p>{{ areaOfInterest['Name'] }}</p>
 								<span class="ripple"></span>
@@ -36,7 +36,7 @@
 						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" 
 							class="{{areaOfInterest['ClassName']}}"
 							ng-class="{ isSelected: areaOfInterest['isSelected'], isNotSelected: !areaOfInterest['isSelected']}"
-							ng-click="toggleSelected($event, areaOfInterest)">
+							ng-click="pvCtrl.toggleSelected($event, areaOfInterest)">
 							<td>
 								<p>{{ areaOfInterest['Name'] }}</p>
 								<span class="ripple"></span>
