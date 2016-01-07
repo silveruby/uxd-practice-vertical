@@ -1,8 +1,14 @@
 (function(){
 
+	/**
+	 * Initiate AngularJS module
+	*/
 	var uxdpv = angular.module('uxdpv', []);
 
 
+	/**
+	 * Directives used by module
+	*/
 	uxdpv.directive('practiceVerticals', function(){
 		return {
 			restrict: 'E',
@@ -19,7 +25,7 @@
 	});
 
 	/**
-	 * Factory to store shared data between controllers
+	 * Service to store shared data between controllers
 	*/
 	uxdpv.service('selectionData', function(){
 
@@ -37,6 +43,9 @@
 	        },
 	        isSelected: function(){
 	        	return selected_count > 0 ? true : false;
+	        },
+	        setSelectedCount: function(count){
+	        	selected_count = count;
 	        }
 
 	    };
@@ -49,7 +58,7 @@
 		var vm = this;
 		vm.current_state = 'default';
 
-		$rootScope.$on('updateCustomMessages', function(event){
+		$rootScope.$on('updateCustomMessages', function(){
 
 			if (selectionData.isSelected() && vm.current_state == 'default'){
 
@@ -65,14 +74,16 @@
 
 		});
 
-		vm.generateLink = function(event){
+		vm.generateLink = function(){
 
 			// switch state
 			vm.current_state = 'personal-link';
 
 			// fade in personal link
-			$('.s3Personal').addClass('fadein');				
-		}
+			$('.s3Personal').addClass('fadein');	
+
+			$rootScope.$emit('getUserPV');			
+		};
 
 	}]);
 
@@ -83,25 +94,50 @@
 		
 		var vm = this;
 
-		vm.firstHalf = [];
-		vm.secondHalf = [];
+		vm.pv1 = [];
+		vm.pv2 = [];
+		vm.select = [];
 
-		// Get JSON object to populate practice vertical
+		/**
+		 * Get JSON object to populate practice vertical
+		*/
 		$http.get('/./assets/js/uxd-practice-verticals.json')
 		.success(function(results){
-			vm.firstHalf = results.slice(0,4);
-			vm.secondHalf = results.slice(4,8);
+			vm.pv1 = results.slice(0,4);
+			vm.pv2 = results.slice(4,8);
 		})
 		.error(function(){
-			vm.firstHalf = undefined;
-			vm.secondHalf = undefined;
+			vm.pv1 = undefined;
+			vm.pv2 = undefined;
+		});
+
+		/**
+		 * Get JSON object of default selection
+		*/
+		$http.get('/./assets/js/default-selection.json')
+		.success(function(results){
+			
+			var count = 0;
+
+			vm.select = results;
+
+			for (pv in vm.select){
+				for (a in vm.select[pv]){
+					count = vm.select[pv][a] ? count++ : count;
+				}
+			}
+
+			selectionData.setSelectedCount(count);
+		})
+		.error(function(){
+			vm.select = undefined;
 		});
 
 		/**
 		 * Set toggle behavior on individual area of interest
 		 * This is to be called with ng-click
 		*/
-		vm.toggleSelected = function(event, areaOfInterest){
+		vm.toggleSelected = function(event, practiceVertical, areaOfInterest){
 
 
 			// Generate ripple effect
@@ -127,12 +163,19 @@
 			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
 
 			// Update isSelected and global selected_count
-			areaOfInterest.isSelected = !areaOfInterest.isSelected;
-			areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+			// areaOfInterest.isSelected = !areaOfInterest.isSelected;
+			// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+			vm.select[practiceVertical.Name][areaOfInterest.Name] = vm.select[practiceVertical.Name][areaOfInterest.Name] ? false : true;
+			vm.select[practiceVertical.Name][areaOfInterest.Name] ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
 
 			$rootScope.$emit('updateCustomMessages');
 
 		};
+
+
+		$rootScope.$on('getUserPV', function(){
+			console.log(vm.select);
+		});
 
 	}]);
 

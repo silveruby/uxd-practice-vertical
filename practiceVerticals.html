@@ -1,7 +1,7 @@
 <div class="row no-pad practiceVerticalTable" ng-controller="getPracticeVertical as pvCtrl">
 	<div class="col-md-6">
 		<div class="row no-pad">
-			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.firstHalf">
+			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.pv1">
 				<table class="table table-hover {{ practiceVertical['ClassName'] }}">
 					<thead>
 						<tr data-toggle="popover" data-placement="top" data-content="{{ practiceVertical['Definition'] }}">
@@ -11,8 +11,8 @@
 					<tbody>
 						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" 
 							class="{{areaOfInterest['ClassName']}}"
-							ng-class="{ isSelected: areaOfInterest['isSelected'], isNotSelected: !areaOfInterest['isSelected']}"
-							ng-click="pvCtrl.toggleSelected($event, areaOfInterest)">
+							ng-class="{ isSelected: pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']], isNotSelected: !pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']]}"
+							ng-click="pvCtrl.toggleSelected($event, practiceVertical, areaOfInterest)">
 							<td>
 								<p>{{ areaOfInterest['Name'] }}</p>
 								<span class="ripple"></span>
@@ -25,7 +25,7 @@
 	</div>
 	<div class="col-md-6">
 		<div class="row no-pad">
-			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.secondHalf">
+			<div class="col-lg-3" ng-repeat="practiceVertical in pvCtrl.pv2">
 				<table class="table table-hover {{ practiceVertical['ClassName'] }}">
 					<thead>
 						<tr data-toggle="popover" data-placement="top" data-content="{{ practiceVertical['Definition'] }}">
@@ -35,8 +35,8 @@
 					<tbody>
 						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" 
 							class="{{areaOfInterest['ClassName']}}"
-							ng-class="{ isSelected: areaOfInterest['isSelected'], isNotSelected: !areaOfInterest['isSelected']}"
-							ng-click="pvCtrl.toggleSelected($event, areaOfInterest)">
+							ng-class="{ isSelected: pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']], isNotSelected: !pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']]}"
+							ng-click="pvCtrl.toggleSelected($event, practiceVertical, areaOfInterest)">
 							<td>
 								<p>{{ areaOfInterest['Name'] }}</p>
 								<span class="ripple"></span>

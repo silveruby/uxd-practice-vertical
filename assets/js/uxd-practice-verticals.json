@@ -1,297 +1,249 @@
-[  
-   {  
+[
+   {
       "Name":"Business Context Analysis",
       "ClassName":"pv_bca",
       "Definition":"A practice whose goal is understanding the primary domain of activities and is informed by the constraints, influencers, and the scope of the intended human-computer interaction",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Context Map",
-            "ClassName":"pv_bca_cm",
-            "isSelected":false
+            "ClassName":"pv_bca_cm"
          },
-         {  
+         {
             "Name":"Performance Measures",
-            "ClassName":"pv_bca_pm",
-            "isSelected":false
+            "ClassName":"pv_bca_pm"
          },
-         {  
+         {
             "Name":"Product / Service Definitions",
-            "ClassName":"pv_bca_psd",
-            "isSelected":false
+            "ClassName":"pv_bca_psd"
          },
-         {  
+         {
             "Name":"Business Intent",
-            "ClassName":"pv_bca_bi",
-            "isSelected":false
+            "ClassName":"pv_bca_bi"
          },
-         {  
+         {
             "Name":"Mission / Vision",
-            "ClassName":"pv_bca_mv",
-            "isSelected":false
+            "ClassName":"pv_bca_mv"
          },
-         {  
+         {
             "Name":"Business Model",
-            "ClassName":"pv_bca_bm",
-            "isSelected":false
+            "ClassName":"pv_bca_bm"
          }
       ]
    },
-   {  
+   {
       "Name":"Usability Engineering",
       "ClassName":"pv_ue",
       "Definition":"A field of research that studies how human behavior and situational context impact the design of effective human-computer interactions",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Synthesis",
-            "ClassName":"pv_ue_s",
-            "isSelected":false
+            "ClassName":"pv_ue_s"
          },
-         {  
+         {
             "Name":"Primary Research",
-            "ClassName":"pv_ue_pr",
-            "isSelected":false
+            "ClassName":"pv_ue_pr"
          },
-         {  
+         {
             "Name":"Testing",
-            "ClassName":"pv_ue_t",
-            "isSelected":false
+            "ClassName":"pv_ue_t"
          },
-         {  
+         {
             "Name":"Logistics",
-            "ClassName":"pv_ue_l",
-            "isSelected":false
+            "ClassName":"pv_ue_l"
          },
-         {  
+         {
             "Name":"Research Design",
-            "ClassName":"pv_ue_rd",
-            "isSelected":false
+            "ClassName":"pv_ue_rd"
          },
-         {  
+         {
             "Name":"Analytics",
-            "ClassName":"pv_ue_a",
-            "isSelected":false
+            "ClassName":"pv_ue_a"
          }
       ]
    },
-   {  
+   {
       "Name":"User Experience Planning",
       "ClassName":"pv_uep",
       "Definition":"A practice that creates a strategy and plan to enable meaningful human-computer interactions and optimal engagement across digital-media channels",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"UX Brief",
-            "ClassName":"pv_uep_uxb",
-            "isSelected":false
+            "ClassName":"pv_uep_uxb"
          },
-         {  
+         {
             "Name":"Personas",
-            "ClassName":"pv_uep_p",
-            "isSelected":false
+            "ClassName":"pv_uep_p"
          },
-         {  
+         {
             "Name":"Engagement Definitions",
-            "ClassName":"pv_uep_ed",
-            "isSelected":false
+            "ClassName":"pv_uep_ed"
          },
-         {  
+         {
             "Name":"UX Management",
-            "ClassName":"pv_uep_uxm",
-            "isSelected":false
+            "ClassName":"pv_uep_uxm"
          },
-         {  
+         {
             "Name":"UX Strategy",
-            "ClassName":"pv_uep_uxs",
-            "isSelected":false
+            "ClassName":"pv_uep_uxs"
          },
-         {  
+         {
             "Name":"Research",
-            "ClassName":"pv_uep_r",
-            "isSelected":false
+            "ClassName":"pv_uep_r"
          }
       ]
    },
-   {  
+   {
       "Name":"Content Publishing",
       "ClassName":"pv_cp",
       "Definition":"A practice that creates and distributes consumable communications",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Content",
-            "ClassName":"pv_cp_c",
-            "isSelected":false
+            "ClassName":"pv_cp_c"
          },
-         {  
+         {
             "Name":"Editing",
-            "ClassName":"pv_cp_e",
-            "isSelected":false
+            "ClassName":"pv_cp_e"
          },
-         {  
+         {
             "Name":"Governance",
-            "ClassName":"pv_cp_g",
-            "isSelected":false
+            "ClassName":"pv_cp_g"
          },
-         {  
+         {
             "Name":"Content Management",
-            "ClassName":"pv_cp_cm",
-            "isSelected":false
+            "ClassName":"pv_cp_cm"
          },
-         {  
+         {
             "Name":"Content Strategy",
-            "ClassName":"pv_cp_cs",
-            "isSelected":false
+            "ClassName":"pv_cp_cs"
          },
-         {  
+         {
             "Name":"Research / Analytics",
-            "ClassName":"pv_cp_ra",
-            "isSelected":false
+            "ClassName":"pv_cp_ra"
          }
       ]
    },
-   {  
+   {
       "Name":"Information Architecture",
       "ClassName":"pv_ia",
       "Definition":"A practice that organizes and relates information in a way that simplifies the way people navigate and use content in Web environments",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Navigation",
-            "ClassName":"pv_ia_n",
-            "isSelected":false
+            "ClassName":"pv_ia_n"
          },
-         {  
+         {
             "Name":"Information Organization",
-            "ClassName":"pv_ia_io",
-            "isSelected":false
+            "ClassName":"pv_ia_io"
          },
-         {  
+         {
             "Name":"Information Relationship",
-            "ClassName":"pv_ia_ir",
-            "isSelected":false
+            "ClassName":"pv_ia_ir"
          },
-         {  
+         {
             "Name":"IA Management",
-            "ClassName":"pv_ia_iam",
-            "isSelected":false
+            "ClassName":"pv_ia_iam"
          },
-         {  
+         {
             "Name":"IA Strategy",
-            "ClassName":"pv_ia_ias",
-            "isSelected":false
+            "ClassName":"pv_ia_ias"
          },
-         {  
+         {
             "Name":"Research / Analytics",
-            "ClassName":"pv_ia_ra",
-            "isSelected":false
+            "ClassName":"pv_ia_ra"
          }
       ]
    },
-   {  
+   {
       "Name":"Interaction Design",
       "ClassName":"pv_id",
       "Definition":"A practice that develops the sensory-afforded structures and behaviors of an interactive object",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Wireframe",
-            "ClassName":"pv_id_w",
-            "isSelected":false
+            "ClassName":"pv_id_w"
          },
-         {  
+         {
             "Name":"Interaction",
-            "ClassName":"pv_id_i",
-            "isSelected":false
+            "ClassName":"pv_id_i"
          },
-         {  
+         {
             "Name":"Patterns",
-            "ClassName":"pv_id_p",
-            "isSelected":false
+            "ClassName":"pv_id_p"
          },
-         {  
+         {
             "Name":"Conventions",
-            "ClassName":"pv_id_c",
-            "isSelected":false
+            "ClassName":"pv_id_c"
          },
-         {  
+         {
             "Name":"Device Strategy",
-            "ClassName":"pv_id_ds",
-            "isSelected":false
+            "ClassName":"pv_id_ds"
          },
-         {  
+         {
             "Name":"Research / Analytics",
-            "ClassName":"pv_id_ra",
-            "isSelected":false
+            "ClassName":"pv_id_ra"
          }
       ]
    },
-   {  
+   {
       "Name":"Visual & Information Design",
       "ClassName":"pv_vid",
       "Definition":"A practice whose goal is to achieve functional, pleasurable, and meaningful visual aesthetics in support of interactive objects’ effective communication",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Graphics",
-            "ClassName":"pv_vid_g",
-            "isSelected":false
+            "ClassName":"pv_vid_g"
          },
-         {  
+         {
             "Name":"Layout",
-            "ClassName":"pv_vid_l",
-            "isSelected":false
+            "ClassName":"pv_vid_l"
          },
-         {  
+         {
             "Name":"Style Guide",
-            "ClassName":"pv_vid_sg",
-            "isSelected":false
+            "ClassName":"pv_vid_sg"
          },
-         {  
+         {
             "Name":"Art Direction",
-            "ClassName":"pv_vid_ad",
-            "isSelected":false
+            "ClassName":"pv_vid_ad"
          },
-         {  
+         {
             "Name":"Creative Strategy",
-            "ClassName":"pv_vid_cs",
-            "isSelected":false
+            "ClassName":"pv_vid_cs"
          },
-         {  
+         {
             "Name":"Research / Analytics",
-            "ClassName":"pv_vid_ra",
-            "isSelected":false
+            "ClassName":"pv_vid_ra"
          }
       ]
    },
-   {  
+   {
       "Name":"Computer Science",
       "ClassName":"pv_cs",
       "Definition":"A scientific and practical approach to computation and its applications",
-      "Area of Interest":[  
-         {  
+      "Area of Interest":[
+         {
             "Name":"Front-end Code",
-            "ClassName":"pv_cs_fec",
-            "isSelected":false
+            "ClassName":"pv_cs_fec"
          },
-         {  
+         {
             "Name":"Database Design",
-            "ClassName":"pv_cs_dd",
-            "isSelected":false
+            "ClassName":"pv_cs_dd"
          },
-         {  
+         {
             "Name":"Server Code",
-            "ClassName":"pv_cs_sc",
-            "isSelected":false
+            "ClassName":"pv_cs_sc"
          },
-         {  
+         {
             "Name":"Infrastructure",
-            "ClassName":"pv_cs_i",
-            "isSelected":false
+            "ClassName":"pv_cs_i"
          },
-         {  
+         {
             "Name":"System Architecture",
-            "ClassName":"pv_cs_sa",
-            "isSelected":false
+            "ClassName":"pv_cs_sa"
          },
-         {  
+         {
             "Name":"Research / Analytics",
-            "ClassName":"pv_cs_ra",
-            "isSelected":false
+            "ClassName":"pv_cs_ra"
          }
       ]
    }
