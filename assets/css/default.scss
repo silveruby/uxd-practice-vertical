@@ -97,40 +97,72 @@ body{
 
 		.jumbotron{
 			padding: 1.5em;
+			height: 200px;
+			margin-bottom: 30px;
+		    color: inherit;
+		    background-color: #eee;
 		}
 
-		.default{
-			.s1Default{
-				visibility: visible;
-			}
-			.s2GenerateLink, .s3Personal{
-				visibility: hidden;
-				height: 0;
-			}
-		}
-		.generate-link{
-			.s2GenerateLink{
-				visibility: visible;
-			}
-			.s1Default, .s3Personal{
-				visibility: hidden;
-				height: 0;
-			}			
-		}
-		.personal-link{
-			.s3Personal{
-				visibility: visible;
-			}
-			.s1Default, .s2GenerateLink{
-				visibility: hidden;
-				height: 0;
-			}	
-		}
 
-		.s2GenerateLink{
+		.card-save{
 			.form-group{
 				padding: 0 10%;
 				margin: 0;
+			}
+		}
+
+		.s1{
+			> div{
+				visibility: hidden;
+				height: 0;
+			}
+			.card-default{
+				visibility: visible;
+			}
+		}
+		.s2{
+			> div{
+				visibility: hidden;
+				height: 0;
+			}
+			.card-save{
+				visibility: visible;
+			}			
+		}
+		.s3{
+			> div{
+				visibility: hidden;
+				height: 0;
+			}
+			.card-confirmation{
+				visibility: visible;
+			}
+		}
+		.s4{
+			> div{
+				visibility: hidden;
+				height: 0;
+			}
+			.card-user{
+				visibility: visible;
+			}
+		}
+		.s5{
+			> div{
+				visibility: hidden;
+				height: 0;
+			}
+			.card-authenticate{
+				visibility: visible;
+			}
+		}		
+		.s6{
+			> div{
+				visibility: hidden;
+				height: 0;
+			}
+			.card-modify{
+				visibility: visible;
 			}
 		}
 	}

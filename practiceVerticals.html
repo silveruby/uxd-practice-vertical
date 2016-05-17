@@ -11,7 +11,7 @@
 					<tbody>
 						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" 
 							class="{{areaOfInterest['ClassName']}}"
-							ng-class="{ isSelected: pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']], isNotSelected: !pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']]}"
+							ng-class="{ isSelected: pvCtrl.select[practiceVertical['ClassName']][areaOfInterest['ClassName']], isNotSelected: !pvCtrl.select[practiceVertical['ClassName']][areaOfInterest['ClassName']]}"
 							ng-click="pvCtrl.toggleSelected($event, practiceVertical, areaOfInterest)">
 							<td>
 								<p>{{ areaOfInterest['Name'] }}</p>
@@ -35,7 +35,7 @@
 					<tbody>
 						<tr ng-repeat="areaOfInterest in practiceVertical['Area of Interest']" 
 							class="{{areaOfInterest['ClassName']}}"
-							ng-class="{ isSelected: pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']], isNotSelected: !pvCtrl.select[practiceVertical['Name']][areaOfInterest['Name']]}"
+							ng-class="{ isSelected: pvCtrl.select[practiceVertical['ClassName']][areaOfInterest['ClassName']], isNotSelected: !pvCtrl.select[practiceVertical['ClassName']][areaOfInterest['ClassName']]}"
 							ng-click="pvCtrl.toggleSelected($event, practiceVertical, areaOfInterest)">
 							<td>
 								<p>{{ areaOfInterest['Name'] }}</p>

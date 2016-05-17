@@ -14,7 +14,7 @@
          },
          {
             "Name":"Product / Service Definitions",
-            "ClassName":"pv_bca_psd"
+            "ClassName":"pv_bca_pd"
          },
          {
             "Name":"Business Intent",
@@ -22,7 +22,7 @@
          },
          {
             "Name":"Mission / Vision",
-            "ClassName":"pv_bca_mv"
+            "ClassName":"pv_bca_m"
          },
          {
             "Name":"Business Model",

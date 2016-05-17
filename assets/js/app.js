@@ -5,7 +5,6 @@
 	*/
 	var uxdpv = angular.module('uxdpv', []);
 
-
 	/**
 	 * Directives used by module
 	*/
@@ -56,17 +55,20 @@
 	*/
 	uxdpv.controller('setCustomMessages', ['$rootScope', 'selectionData', function($rootScope, selectionData){
 		var vm = this;
-		vm.current_state = 'default';
+		vm.current_state = 's1';
 
+		/** State 1 
+		* Listen to user selection on the chart
+		*/
 		$rootScope.$on('updateCustomMessages', function(){
 
-			if (selectionData.isSelected() && vm.current_state == 'default'){
+			if (selectionData.isSelected() && vm.current_state == 's1'){
 
 				// switch state
-				vm.current_state = 'generate-link';
+				vm.current_state = 's2';
 
 				// fade in generate link
-				$('.s2GenerateLink').addClass('fadein');	
+				$('.card-save').addClass('fadein');	
 
 				// destroy emit event 'updateCustomMessages'
 				$rootScope.$destroy('updateCustomMessages');		
@@ -74,16 +76,60 @@
 
 		});
 
+		/** State 2 
+		* Sanitize name and email inputs, save data to DB
+		*/
 		vm.generateLink = function(){
 
+			// BEHAVIOR
+
+			// Sanitize name and email
+			
+			// Create Firebase Reference
+			var myFirebaseRef = new Firebase("https://torrid-inferno-2523.firebaseio.com/");
+			
+			// Generate random password
+
+			// Create user
+			myFirebaseRef.createUser({
+			  email    : "bobtony@firebase.com",
+			  password : "correcthorsebatterystaple"
+			}, function(error, userData) {
+			  if (error) {
+			    console.log("Error creating user:", error);
+			  } else {
+			    console.log("Successfully created user account with uid:", userData.uid);
+			  }
+			});		
+
+			// Save selection for user	
+
+			// PRESENTTION
+
 			// switch state
-			vm.current_state = 'personal-link';
+			vm.current_state = 's3';
 
 			// fade in personal link
-			$('.s3Personal').addClass('fadein');	
+			$('.card-confirmation').addClass('fadein');	
 
 			$rootScope.$emit('getUserPV');			
 		};
+
+		/** State 3
+		* Provide confirmation and new link to user's chart
+		*/
+
+		/** State 4
+		* Show user's link and share and edit options
+		*/		
+
+		/** State 5
+		* Authenticate email and password 
+		*/			
+
+		/** State 6
+		* Save or cancel changes 
+		*/	
 
 	}]);
 
@@ -122,8 +168,10 @@
 			vm.select = results;
 
 			for (pv in vm.select){
-				for (a in vm.select[pv]){
-					count = vm.select[pv][a] ? count++ : count;
+				if(pv != "Owner"){
+					for (a in vm.select[pv]){
+						if(vm.select[pv][a]) count++;
+					}
 				}
 			}
 
@@ -138,7 +186,6 @@
 		 * This is to be called with ng-click
 		*/
 		vm.toggleSelected = function(event, practiceVertical, areaOfInterest){
-
 
 			// Generate ripple effect
 			var areaBox, x, y, w, h, rect;
@@ -165,17 +212,19 @@
 			// Update isSelected and global selected_count
 			// areaOfInterest.isSelected = !areaOfInterest.isSelected;
 			// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
-			vm.select[practiceVertical.Name][areaOfInterest.Name] = vm.select[practiceVertical.Name][areaOfInterest.Name] ? false : true;
-			vm.select[practiceVertical.Name][areaOfInterest.Name] ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] = vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? false : true;
+			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
 
 			$rootScope.$emit('updateCustomMessages');
 
 		};
 
-
-		$rootScope.$on('getUserPV', function(){
-			console.log(vm.select);
-		});
+		/**
+		 * Debugging on console
+		*/
+		// $rootScope.$on('getUserPV', function(){
+		// 	console.log(vm.select);
+		// });
 
 	}]);
 
