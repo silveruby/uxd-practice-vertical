@@ -2,7 +2,7 @@
 	<div class="col-xs-12 col-md-offset-4 col-md-4 jumbotron text-center {{ cm.current_state }}">
 
         <!-- 1. Default UXDPV -->
-		<div class="card-default fade fadein">
+		<div class="card-default fade">
             <h4>Make your selection below and create your own practice vertical chart</h4>
         </div>
 
@@ -11,11 +11,11 @@
             <h4>Looks good? Do you want to save this chart?</h4>
             <form>
                 <div class="form-group">
-                    <input type="name" class="form-control text-center" placeholder="Name"></input>
-                    <input type="email" class="form-control text-center" placeholder="Email address"></input>
+                    <input type="name" ng-model="cm.name" class="form-control text-center" placeholder="Name"></input>
+                    <input type="email" ng-model="cm.newEmail" class="form-control text-center" placeholder="Email address"></input>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="form-control" ng-click="cm.generateLink()">
+                    <button type="submit" class="form-control" ng-click="cm.createUserLink()" value="Save UXDPV chart">
                         Save UXDPV chart
                     </button>
                 </div>
@@ -24,11 +24,16 @@
 
         <!-- 3. Confirmation -->
         <div class="card-confirmation fade">
-            <h4>Awesome! Your chart is live!</h4>
-            <div><strong>You'll receive an auto-generated passport in the email.</strong></div>
-            <div>You can use the password to login and modify this chart in the future</div>
-            &nbsp;
-            <a href="">View and share your UXDPV chart</a>
+            <div class="success">
+                <h4>Awesome! Your chart is live!</h4>
+                <div><strong>Check your password in your email.</strong></div>
+                <div>You can use the password to modify your chart in the future</div>&nbsp;
+                <a href ng-click="cm.goToState('s4')">View and share your UXDPV chart</a>
+            </div>
+            <div class="error">
+                <h4>Uh oh! Something is wrong!</h4>
+                <div class="msg"></div>&nbsp;
+                <a href ng-click="cm.goToState('s2')">Please retry</a>
         </div>
 
         <!-- 4. User UXDPV -->
@@ -42,8 +47,8 @@
             <h4>Let's just make sure we are working with your chart.</h4>
             <form>
                 <div class="form-group">
-                    <input type="email" class="form-control text-center" placeholder="Email"></input>
-                    <input type="password" class="form-control text-center" placeholder="Password"></input>
+                    <input type="email" ng-model="cm.userEmail" class="form-control text-center" placeholder="Email"></input>
+                    <input type="password" ng-model="cm.password" class="form-control text-center" placeholder="Password"></input>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="form-control" ng-click="cm.generateLink()">

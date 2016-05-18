@@ -111,6 +111,12 @@ body{
 			}
 		}
 
+		.card-confirmation{
+			.error, .success{
+				display: none;
+			}
+		}
+
 		.s1{
 			> div{
 				visibility: hidden;

@@ -29,6 +29,7 @@
 	uxdpv.service('selectionData', function(){
 
 		var selected_count = 0;
+		var selectedData = null;
 
 		return{
 	    	getSelectedCount: function(){
@@ -45,17 +46,79 @@
 	        },
 	        setSelectedCount: function(count){
 	        	selected_count = count;
+	        },
+	        getSelectedData: function(){
+	        	return selectedData;
+	        },
+	        setSelectedData: function(data){
+	        	selectedData = data;
 	        }
 
 	    };
 	});
 
 	/**
+	 * Service to store current user state between controllers
+	*/
+	uxdpv.service('userState', function(){
+
+		var current_state = "s1";
+
+		return{
+	    	getCurrentState: function(){
+	            return current_state;
+	        },
+	        setStateTo: function(state){
+	        	current_state = state;
+	        	switch (state){
+	        		case 's1':
+	        			$('.card-default').addClass('fadein');	
+	        			break;
+	        		case 's2':
+	        			$('.card-default').removeClass('fadein');
+	        			$('.card-save').addClass('fadein');	
+	        			break;
+	        		case 's3':
+	        			$('.card-save').removeClass('fadein');
+	        			$('.card-confirmation').addClass('fadein');	
+	        			break;	 
+	        		case 's4':
+	        			$('.card-confirmation').removeClass('fadein');
+	        			$('.card-user').addClass('fadein');	
+	        			break;	
+	        		case 's5':
+	        			$('.card-user').removeClass('fadein');
+	        			$('.card-authenticate').addClass('fadein');	
+	        			break;	
+	        		case 's6':
+	        			$('.card-authenticate').removeClass('fadein');
+	        			$('.card-modify').addClass('fadein');	
+	        			break;	        			        			        			       				        		
+	        	} // end switch state
+	        }
+	    };
+	});	
+
+	/**
+	* General Helper functions
+	*/
+	generatePassword = function () {
+	    var length = 8,
+	        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+	        retVal = "";
+	    for (var i = 0, n = charset.length; i < length; ++i) {
+	        retVal += charset.charAt(Math.floor(Math.random() * n));
+	    }
+	    return retVal;
+	}
+
+	/**
 	 * Controller to set Custom Messages
 	*/
-	uxdpv.controller('setCustomMessages', ['$rootScope', 'selectionData', function($rootScope, selectionData){
+	uxdpv.controller('setCustomMessages', ['$rootScope', 'selectionData', 'userState', function($rootScope, selectionData, userState){
 		var vm = this;
-		vm.current_state = 's1';
+		vm.current_state = 's2';
+		userState.setStateTo(vm.current_state);
 
 		/** State 1 
 		* Listen to user selection on the chart
@@ -65,10 +128,7 @@
 			if (selectionData.isSelected() && vm.current_state == 's1'){
 
 				// switch state
-				vm.current_state = 's2';
-
-				// fade in generate link
-				$('.card-save').addClass('fadein');	
+				vm.goToState('s2');
 
 				// destroy emit event 'updateCustomMessages'
 				$rootScope.$destroy('updateCustomMessages');		
@@ -76,43 +136,75 @@
 
 		});
 
+		// Switch between states
+		vm.goToState = function(state){
+			vm.current_state = state;
+			userState.setStateTo(state);
+		};
+
 		/** State 2 
 		* Sanitize name and email inputs, save data to DB
 		*/
-		vm.generateLink = function(){
-
-			// BEHAVIOR
+		vm.createUserLink = function(){
 
 			// Sanitize name and email
-			
+			// This is done via AngularJS Form... TBD
+
 			// Create Firebase Reference
 			var myFirebaseRef = new Firebase("https://torrid-inferno-2523.firebaseio.com/");
 			
 			// Generate random password
+			// var password = generatePassword();
 
 			// Create user
 			myFirebaseRef.createUser({
-			  email    : "bobtony@firebase.com",
-			  password : "correcthorsebatterystaple"
+			  // email    : vm.email,
+			  email: 'zhengsan@gmail.com',
+			  password : 'helloworld'
 			}, function(error, userData) {
 			  if (error) {
-			    console.log("Error creating user:", error);
+			  	// Presentation
+			  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
+			  	$('.card-confirmation .success').hide();
+			  	$('.card-confirmation .error').show();
 			  } else {
-			    console.log("Successfully created user account with uid:", userData.uid);
+			  	// Save selection for new user
+				var userSelectionJSON = selectionData.getSelectedData();
+				angular.fromJson(angular.toJson(userSelectionJSON));
+				//console.log(userSelectionJSON);
+
+				myFirebaseRef.child(userData.uid).set(
+				  userSelectionJSON, function(error){
+					  if (error) {
+					    // Presentation
+					  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
+					  	$('.card-confirmation .success').hide();
+					  	$('.card-confirmation .error').show();
+					  } else {
+					    // Presentation
+					  	$('.card-confirmation .success').show();
+					  	$('.card-confirmation .error').hide();
+					  }
+				});	// End Create child			
+
+			  	// Display results
+			    //console.log("Successfully created user account with uid:", userData.uid);
+
+			  	// Sent password reset
+			  	myFirebaseRef.resetPassword({
+				  email : "zhengsan@gmail.com"
+				}, function(error) {
+				  if (error === null) {
+				    console.log("Password reset email sent successfully");
+				  } else {
+				    console.log("Error sending password reset email:", error);
+				  }
+				}); // end password reset
 			  }
-			});		
-
-			// Save selection for user	
-
-			// PRESENTTION
+			}); // end create user
 
 			// switch state
-			vm.current_state = 's3';
-
-			// fade in personal link
-			$('.card-confirmation').addClass('fadein');	
-
-			$rootScope.$emit('getUserPV');			
+			vm.goToState('s3');				
 		};
 
 		/** State 3
@@ -126,6 +218,21 @@
 		/** State 5
 		* Authenticate email and password 
 		*/			
+		vm.authenticateUser = function(){
+			// Create Firebase Reference
+			var myFirebaseRef = new Firebase("https://torrid-inferno-2523.firebaseio.com/");
+			
+			ref.authWithPassword({
+			  email    : "bobtony@firebase.com",
+			  password : "correcthorsebatterystaple"
+			}, function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+			  } else {
+			    console.log("Authenticated successfully with payload:", authData);
+			  }
+			});	
+		};
 
 		/** State 6
 		* Save or cancel changes 
@@ -136,7 +243,7 @@
 	/**
 	 * Controller to get Practice Vertical JSON into View
 	*/
-	uxdpv.controller('getPracticeVertical', ['$rootScope', '$http', 'selectionData', function($rootScope, $http, selectionData){
+	uxdpv.controller('getPracticeVertical', ['$rootScope', '$http', 'selectionData', 'userState', function($rootScope, $http, selectionData, userState){
 		
 		var vm = this;
 
@@ -213,18 +320,13 @@
 			// areaOfInterest.isSelected = !areaOfInterest.isSelected;
 			// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
 			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] = vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? false : true;
-			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount();
+
+			selectionData.setSelectedData(vm.select);
 
 			$rootScope.$emit('updateCustomMessages');
 
 		};
-
-		/**
-		 * Debugging on console
-		*/
-		// $rootScope.$on('getUserPV', function(){
-		// 	console.log(vm.select);
-		// });
 
 	}]);
 
