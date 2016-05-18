@@ -1,0 +1,36 @@
+<div class="messageBox row no-pad">
+	<div class="col-xs-12 col-md-offset-4 col-md-4 jumbotron text-center {{ current_state }}">
+        <!-- 4. User UXDPV -->
+        <div class="card-user fade">
+            <h4>Ruby's Practice Vertical <mark>link/url</mark></h4>
+            <div>Share on Twitter, Facebook or LinkedIn</div>
+        </div>
+
+        <!-- 5. User Auth with Email & Password Input -->
+        <div class="card-authenticate fade">
+            <h4>Let's just make sure we are working with your chart.</h4>
+            <form>
+                <div class="form-group">
+                    <input type="email" ng-model="userEmail" class="form-control text-center" placeholder="Email"></input>
+                    <input type="password" ng-model="password" class="form-control text-center" placeholder="Password"></input>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control" ng-click="generateLink()">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 6. Modify UXDPV -->
+        <div class="card-modify fade">
+            <h4>Alright, let's make some edits!</h4>
+        </div>
+
+	</div>
+
+    <!-- Arrow Down -->
+    <div class="col-xs-12 text-center">
+        <span class="glyphicon glyphicon-chevron-down"></span> 
+    </div>
+</div>

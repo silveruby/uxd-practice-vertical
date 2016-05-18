@@ -15,32 +15,18 @@
 		};
 	});
 	
-	// uxdpv.directive('newUserBox', function(){
-	// 	return{
-	// 		restrict: 'E',
-	// 		templateUrl: 'newUserBox.html'
-	// 	};
-	// });
-	// uxdpv.directive('custUserBox', function(){
-	// 	return{
-	// 		restrict: 'E',
-	// 		templateUrl: 'custUserBox.html'
-	// 	};
-	// });	
-
-	//Define Routing for app
-	uxdpv.config(['$routeProvider',
-	  function($routeProvider) {
-	    $routeProvider.
-	      when('/user', {
-	        templateUrl: 'templates/custUserBox.html',
-	        controller: 'custUserBoxController'
-	    }).
-	      otherwise({
-	        templateUrl: 'templates/newUserBox.html',
-	        controller: 'newUserBoxController'
-	      });
-	}]);	
+	uxdpv.directive('newUserBox', function(){
+		return{
+			restrict: 'E',
+			templateUrl: 'newUserBox.html'
+		};
+	});
+	uxdpv.directive('custUserBox', function(){
+		return{
+			restrict: 'E',
+			templateUrl: 'custUserBox.html'
+		};
+	});	
 
 	/**
 	 * Service to store shared data between controllers
@@ -132,10 +118,10 @@
 	}
 
 	/**
-	 * Controller to set new user box
+	 * Controller to set Custom Messages
 	*/
-	uxdpv.controller('newUserBoxController', ['$rootScope', 'selectionData', 'userState', function($rootScope, selectionData, userState){
-		var vm = $rootScope;
+	uxdpv.controller('setCustomMessages', ['$rootScope', 'selectionData', 'userState', function($rootScope, selectionData, userState){
+		var vm = this;
 		vm.current_state = 's2';
 		userState.setStateTo(vm.current_state);
 
@@ -228,18 +214,7 @@
 
 		/** State 3
 		* Provide confirmation and new link to user's chart
-		*/		
-	}]);
-
-	/**
-	 * Controller to set Custom Messages
-	*/
-	uxdpv.controller('custUserBoxController', ['$rootScope', 'selectionData', 'userState', function($rootScope, selectionData, userState){
-		var vm = $rootScope;
-		vm.current_state = 's4';
-		userState.setStateTo(vm.current_state);
-
-		vm.userID = $routeParams.orderId;
+		*/
 
 		/** State 4
 		* Show user's link and share and edit options
