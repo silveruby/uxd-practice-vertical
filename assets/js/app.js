@@ -3,7 +3,7 @@
 	/**
 	 * Initiate AngularJS module
 	*/
-	var uxdpv = angular.module('uxdpv', ['ngRoute']);
+	var uxdpv = angular.module('uxdpv', ['firebase']);
 
 	/**
 	 * Directives used by module
@@ -14,152 +14,158 @@
 			templateUrl: 'practiceVerticals.html'
 		};
 	});
-	
-	// uxdpv.directive('newUserBox', function(){
-	// 	return{
-	// 		restrict: 'E',
-	// 		templateUrl: 'newUserBox.html'
-	// 	};
-	// });
-	// uxdpv.directive('custUserBox', function(){
-	// 	return{
-	// 		restrict: 'E',
-	// 		templateUrl: 'custUserBox.html'
-	// 	};
-	// });	
 
-	//Define Routing for app
-	uxdpv.config(['$routeProvider',
-	  function($routeProvider) {
-	    $routeProvider.
-	      when('/user', {
-	        templateUrl: 'templates/custUserBox.html',
-	        controller: 'custUserBoxController'
-	    }).
-	      otherwise({
-	        templateUrl: 'templates/newUserBox.html',
-	        controller: 'newUserBoxController'
-	      });
-	}]);	
+	uxdpv.config( [ '$locationProvider', function( $locationProvider ) {
+	   // In order to get the query string from the
+	   // $location object, it must be in HTML5 mode.
+	   $locationProvider.html5Mode( true );
+	}]);
 
 	/**
-	 * Service to store shared data between controllers
+	 * FireBase API Factory
 	*/
-	uxdpv.service('selectionData', function(){
+	uxdpv.factory('myFireBase', ['$firebaseObject', '$firebaseAuth', 
+		function($firebaseObject, $firebaseAuth) {
 
-		var selected_count = 0;
-		var selectedData = null;
+		// Create FireBase reference based on userID
+		var myFirebaseRef = 
+			new Firebase("https://torrid-inferno-2523.firebaseio.com/");
 
-		return{
-	    	getSelectedCount: function(){
-	            return selected_count;
-	        },
-	        incrementSelectedCount: function(){
-	        	selected_count++;
-	        },
-	        decrementSelectedCount: function(){
-	        	selected_count != 0 ? selected_count-- : selected_count; 
-	        },
-	        isSelected: function(){
-	        	return selected_count > 0 ? true : false;
-	        },
-	        setSelectedCount: function(count){
-	        	selected_count = count;
-	        },
-	        getSelectedData: function(){
-	        	return selectedData;
-	        },
-	        setSelectedData: function(data){
-	        	selectedData = data;
-	        }
+		return {
+			authenticateUser : function(){
+				myFirebaseRef.authWithPassword({
+				  email    : "bobtony@firebase.com",
+				  password : "correcthorsebatterystaple"
+				}, function(error, authData) {
+				  if (error) {
+				    console.log("Login Failed!", error);
+				  } else {
+				    console.log("Authenticated successfully with payload:", authData);
+				  }
+				});	
+			},
+			saveUser : null,
+			getSelectJSON : function(){
+				var selectJSON = $firebaseObject(myFirebaseRef.child(vm.loc.user));
 
-	    };
-	});
+				selectJSON.$loaded().catch(function(err) {
+				   // Load default selection JSON object 
+					vm.loadDefaultSelectionJSON();	
+				});
+
+				return selectJSON;
+			},
+			deleteUser : null,		    	    
+			resetEmail : null
+		}
+	}]);
 
 	/**
-	 * Service to store current user state between controllers
+	 * Main controller
 	*/
-	uxdpv.service('userState', function(){
+	uxdpv.controller('mainController', 
+		['$scope', '$location', '$http', 'myFireBase',
+		function($scope, $location, $http, myFireBase){
 
-		var current_state = "s1";
+		var vm = $scope;
+		vm.current_state = '';
+		vm.selected_count = 0;
+		vm.pv1 = [];
+		vm.pv2 = [];
+		vm.select = [];	
 
-		return{
-	    	getCurrentState: function(){
-	            return current_state;
-	        },
-	        setStateTo: function(state){
-	        	current_state = state;
-	        	switch (state){
-	        		case 's1':
-	        			$('.card-default').addClass('fadein');	
-	        			break;
-	        		case 's2':
-	        			$('.card-default').removeClass('fadein');
-	        			$('.card-save').addClass('fadein');	
-	        			break;
-	        		case 's3':
-	        			$('.card-save').removeClass('fadein');
-	        			$('.card-confirmation').addClass('fadein');	
-	        			break;	 
-	        		case 's4':
-	        			$('.card-confirmation').removeClass('fadein');
-	        			$('.card-user').addClass('fadein');	
-	        			break;	
-	        		case 's5':
-	        			$('.card-user').removeClass('fadein');
-	        			$('.card-authenticate').addClass('fadein');	
-	        			break;	
-	        		case 's6':
-	        			$('.card-authenticate').removeClass('fadein');
-	        			$('.card-modify').addClass('fadein');	
-	        			break;	        			        			        			       				        		
-	        	} // end switch state
-	        }
-	    };
-	});	
-
-	/**
-	* General Helper functions
-	*/
-	generatePassword = function () {
-	    var length = 8,
-	        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-	        retVal = "";
-	    for (var i = 0, n = charset.length; i < length; ++i) {
-	        retVal += charset.charAt(Math.floor(Math.random() * n));
-	    }
-	    return retVal;
-	}
-
-	/**
-	 * Controller to set new user box
-	*/
-	uxdpv.controller('newUserBoxController', ['$rootScope', 'selectionData', 'userState', function($rootScope, selectionData, userState){
-		var vm = $rootScope;
-		vm.current_state = 's2';
-		userState.setStateTo(vm.current_state);
-
-		/** State 1 
-		* Listen to user selection on the chart
+		/** Init
 		*/
-		$rootScope.$on('updateCustomMessages', function(){
+		vm.init = function(){
 
-			if (selectionData.isSelected() && vm.current_state == 's1'){
+			// Detect URL parameter
+			vm.loc = $location.path('/').search();
 
+			/**
+			 * Get JSON object to populate practice vertical
+			*/
+			$http.get('/./assets/js/uxd-practice-verticals.json')
+			.success(function(results){
+				vm.pv1 = results.slice(0,4);
+				vm.pv2 = results.slice(4,8);
+			})
+			.error(function(){
+				vm.pv1 = undefined;
+				vm.pv2 = undefined;
+			});
+
+			//console.log("user: " + vm.loc.user);
+
+			if(vm.loc.user != undefined){
+				
+				
+				var count = 0;
+				
+				vm.select = myFireBase.getSelectJSON();
+
+				for (pv in vm.select){
+					//console.log('pv: ' + pv);
+					for (a in vm.select[pv]){
+						//console.log('a: ' + a);
+						//console.log('vm.select[pv[a]: ' + vm.select[pv][a]);
+						if(vm.select[pv][a]) count++;
+					}
+				}
+
+				console.log("count: " + count);
+				vm.selected_count = count; 
+				vm.goToState('s4');
+			}		
+			else{
+				// Load default selection JSON object 
+				vm.loadDefaultSelectionJSON();		
+			}
+		};
+
+		/** State 1
+		 * Set toggle behavior on individual area of interest
+		 * This is to be called with ng-click
+		*/
+		vm.toggleSelected = function(event, practiceVertical, areaOfInterest){
+
+			// Generate ripple effect
+			var areaBox, x, y, w, h, rect;
+
+			areaBox = document.querySelector("." + areaOfInterest.ClassName);
+
+			rect = areaBox.getBoundingClientRect();
+			x = event.clientX - rect.left;
+			y = event.clientY - rect.top;
+
+			w = $("." + areaOfInterest.ClassName + " .ripple").width();
+			h = $("." + areaOfInterest.ClassName + " .ripple").height();
+
+			x = x - (w/2);
+			y = y - (h/2);
+
+
+			$("." + areaOfInterest.ClassName + " .ripple").css({  top : y + 'px', left : x + 'px' });
+
+
+			$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
+			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
+
+			// Update isSelected and global selected_count
+			// areaOfInterest.isSelected = !areaOfInterest.isSelected;
+			// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] = 
+				vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? 
+				false : true;
+			
+			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? 
+				vm.selected_count++ : vm.selected_count--;
+
+			if (vm.current_state = 's1' && vm.selected_count > 0){
 				// switch state
-				vm.goToState('s2');
-
-				// destroy emit event 'updateCustomMessages'
-				$rootScope.$destroy('updateCustomMessages');		
+				vm.goToState('s2');		
 			}
 
-		});
-
-		// Switch between states
-		vm.goToState = function(state){
-			vm.current_state = state;
-			userState.setStateTo(state);
-		};
+		}; // end helper function for toggleSelected
 
 		/** State 2 
 		* Sanitize name and email inputs, save data to DB
@@ -188,7 +194,7 @@
 			  	$('.card-confirmation .error').show();
 			  } else {
 			  	// Save selection for new user
-				var userSelectionJSON = selectionData.getSelectedData();
+				var userSelectionJSON = vm.select;
 				angular.fromJson(angular.toJson(userSelectionJSON));
 				//console.log(userSelectionJSON);
 
@@ -229,17 +235,6 @@
 		/** State 3
 		* Provide confirmation and new link to user's chart
 		*/		
-	}]);
-
-	/**
-	 * Controller to set Custom Messages
-	*/
-	uxdpv.controller('custUserBoxController', ['$rootScope', 'selectionData', 'userState', function($rootScope, selectionData, userState){
-		var vm = $rootScope;
-		vm.current_state = 's4';
-		userState.setStateTo(vm.current_state);
-
-		vm.userID = $routeParams.orderId;
 
 		/** State 4
 		* Show user's link and share and edit options
@@ -268,96 +263,83 @@
 		* Save or cancel changes 
 		*/	
 
-	}]);
-
-	/**
-	 * Controller to get Practice Vertical JSON into View
-	*/
-	uxdpv.controller('getPracticeVertical', ['$rootScope', '$http', 'selectionData', 'userState', function($rootScope, $http, selectionData, userState){
-		
-		var vm = this;
-
-		vm.pv1 = [];
-		vm.pv2 = [];
-		vm.select = [];
-
-		/**
-		 * Get JSON object to populate practice vertical
+		/** HELPER function
+		* Load default selection
 		*/
-		$http.get('/./assets/js/uxd-practice-verticals.json')
-		.success(function(results){
-			vm.pv1 = results.slice(0,4);
-			vm.pv2 = results.slice(4,8);
-		})
-		.error(function(){
-			vm.pv1 = undefined;
-			vm.pv2 = undefined;
-		});
+		vm.loadDefaultSelectionJSON = function(){
+			/**
+			* Create JSON object for the default selection
+			*/
+			$http.get('/./assets/js/default-selection.json')
+			.success(function(results){
+				
+				var count = 0;
 
-		/**
-		 * Get JSON object of default selection
-		*/
-		$http.get('/./assets/js/default-selection.json')
-		.success(function(results){
-			
-			var count = 0;
+				vm.select = results;
 
-			vm.select = results;
-
-			for (pv in vm.select){
-				if(pv != "Owner"){
+				for (pv in vm.select){
 					for (a in vm.select[pv]){
 						if(vm.select[pv][a]) count++;
 					}
 				}
-			}
+				console.log('using default selection');
+				vm.goToState('s1');
+			})	
+			.error(function(){
+				// vm.select = undefined;
+				vm.goToState('s1');
+				console.log('error loading default selection');
+			});				
+		}
 
-			selectionData.setSelectedCount(count);
-		})
-		.error(function(){
-			vm.select = undefined;
-		});
-
-		/**
-		 * Set toggle behavior on individual area of interest
-		 * This is to be called with ng-click
+		/** HELPER function
+		* Switch between states
 		*/
-		vm.toggleSelected = function(event, practiceVertical, areaOfInterest){
+		vm.goToState = function(state){
+			
+			vm.current_state = state;
+			console.log("current state: " + vm.current_state);
 
-			// Generate ripple effect
-			var areaBox, x, y, w, h, rect;
+			$('.fade').removeClass('fadein');
 
-			areaBox = document.querySelector("." + areaOfInterest.ClassName);
-
-			rect = areaBox.getBoundingClientRect();
-			x = event.clientX - rect.left;
-			y = event.clientY - rect.top;
-
-			w = $("." + areaOfInterest.ClassName + " .ripple").width();
-			h = $("." + areaOfInterest.ClassName + " .ripple").height();
-
-			x = x - (w/2);
-			y = y - (h/2);
-
-
-			$("." + areaOfInterest.ClassName + " .ripple").css({  top : y + 'px', left : x + 'px' });
-
-
-			$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
-			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
-
-			// Update isSelected and global selected_count
-			// areaOfInterest.isSelected = !areaOfInterest.isSelected;
-			// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
-			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] = vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? false : true;
-			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount();
-
-			selectionData.setSelectedData(vm.select);
-
-			$rootScope.$emit('updateCustomMessages');
-
+			switch (state){
+        		case 's1':
+        			$('.card-default').addClass('fadein');	
+        			break;
+        		case 's2':
+        			$('.card-save').addClass('fadein');	
+        			break;
+        		case 's3':
+        			$('.card-confirmation').addClass('fadein');	
+        			break;	 
+        		case 's4':
+        			console.log("state 4");
+        			$('.messageBox .card-user').addClass('fadein');	
+        			break;	
+        		case 's5':
+        			$('.card-authenticate').addClass('fadein');	
+        			break;	
+        		case 's6':
+        			$('.card-modify').addClass('fadein');	
+        			break;	        			        			           	
+        	} // end switch state
 		};
 
-	}]);
+		/** HELPER function
+		* Generate random password
+		*/
+		vm.generatePassword = function () {
+		    var length = 8,
+		        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+		        retVal = "";
+		    for (var i = 0, n = charset.length; i < length; ++i) {
+		        retVal += charset.charAt(Math.floor(Math.random() * n));
+		    }
+		    return retVal;
+		} // end helper function for generatePassword
+
+		vm.init();
+
+	}]); // end MainController
 
 })();
