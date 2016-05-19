@@ -104,7 +104,7 @@ body{
 		}
 
 
-		.card-save{
+		.card-save, .card-authenticate{
 			.form-group{
 				padding: 0 10%;
 				margin: 0;
@@ -117,53 +117,83 @@ body{
 			}
 		}
 
-		.s1{
-			> div{
-				visibility: hidden;
+		.card-authenticate{
+			.error{
+				display: none;
+			}
+		}		
+
+		&.s1{
+			.card-save, 
+			.card-confirmation, 
+			.card-user, 
+			.card-authenticate, 
+			.card-modify{
+				display: none;
 				height: 0;
 			}
 			.card-default{
-				visibility: visible;
+				display: block;
 			}
 		}
-		.s2{
-			> div{
-				visibility: hidden;
+		&.s2{
+			.card-default, 
+			.card-confirmation, 
+			.card-user, 
+			.card-authenticate, 
+			.card-modify{
+				display: none;
 				height: 0;
 			}
 			.card-save{
-				visibility: visible;
+				display: block;
 			}			
 		}
-		.s3{
-			> div{
-				visibility: hidden;
+		&.s3{
+			.card-default, 
+			.card-save, 
+			.card-user, 
+			.card-authenticate, 
+			.card-modify{
+				display: none;
 				height: 0;
 			}
 			.card-confirmation{
-				visibility: visible;
+				display: block;
 			}
 		}
-		.s4{
-			> div{
-				visibility: hidden;
+		&.s4{
+			.card-default, 
+			.card-save, 
+			.card-confirmation, 
+			.card-authenticate, 
+			.card-modify{
+				display: none;
 				height: 0;
 			}
 			.card-user{
-				visibility: visible;
+				display: block;
 			}
 		}
-		.s5{
-			> div{
-				visibility: hidden;
+		&.s5{
+			.card-default, 
+			.card-save, 
+			.card-confirmation, 
+			.card-user, 
+			.card-modify{
+				display: none;
 				height: 0;
 			}
 			.card-authenticate{
-				visibility: visible;
+				display: block;
 			}
 		}		
-		.s6{
-			> div{
+		&.s6{
+			.card-default, 
+			.card-save, 
+			.card-confirmation, 
+			.card-user, 
+			.card-authenticate{
 				visibility: hidden;
 				height: 0;
 			}

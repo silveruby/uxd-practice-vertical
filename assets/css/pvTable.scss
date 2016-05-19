@@ -104,6 +104,18 @@ $material_orange_900: #E65100;
 /* PRACTICE VERTICAL TABLE STYLES */
 .practiceVerticalTable{
 
+	&.s1, &.s2, &.s6{
+		td{
+			cursor: pointer;
+		}
+	}
+
+	&.s3, &.s4, &.s5, &.s6{
+		td{
+			cursor: no-drop;
+		}
+	}
+
 	.row{
 
 		.col-lg-3{
@@ -115,7 +127,6 @@ $material_orange_900: #E65100;
 					padding: 0 .5em;
 					text-align: center;
 					border: none;
-					cursor: pointer;
 					position: relative;
 					overflow: hidden;
 				}

@@ -21,43 +21,23 @@
 	   $locationProvider.html5Mode( true );
 	}]);
 
-	/**
-	 * FireBase API Factory
+	/** Factory
+	 * FireBase APIs using AngularFire 
 	*/
 	uxdpv.factory('myFireBase', ['$firebaseObject', '$firebaseAuth', 
 		function($firebaseObject, $firebaseAuth) {
 
-		// Create FireBase reference based on userID
-		var myFirebaseRef = 
-			new Firebase("https://torrid-inferno-2523.firebaseio.com/");
-
+		var fireBaseProject= 'https://torrid-inferno-2523.firebaseio.com/'
 		return {
-			authenticateUser : function(){
-				myFirebaseRef.authWithPassword({
-				  email    : "bobtony@firebase.com",
-				  password : "correcthorsebatterystaple"
-				}, function(error, authData) {
-				  if (error) {
-				    console.log("Login Failed!", error);
-				  } else {
-				    console.log("Authenticated successfully with payload:", authData);
-				  }
-				});	
+			auth : function(){
+				var myFirebaseRef = new Firebase(fireBaseProject);
+				return $firebaseAuth(myFirebaseRef);
 			},
-			saveUser : null,
-			getSelectJSON : function(){
-				var selectJSON = $firebaseObject(myFirebaseRef.child(vm.loc.user));
-
-				selectJSON.$loaded().catch(function(err) {
-				   // Load default selection JSON object 
-					vm.loadDefaultSelectionJSON();	
-				});
-
-				return selectJSON;
-			},
-			deleteUser : null,		    	    
-			resetEmail : null
-		}
+			obj  : function(userID){
+				var myFirebaseRef = new Firebase(fireBaseProject + userID);				
+				return $firebaseObject(myFirebaseRef);
+			}
+		};
 	}]);
 
 	/**
@@ -81,46 +61,60 @@
 			// Detect URL parameter
 			vm.loc = $location.path('/').search();
 
-			/**
-			 * Get JSON object to populate practice vertical
-			*/
-			$http.get('/./assets/js/uxd-practice-verticals.json')
-			.success(function(results){
-				vm.pv1 = results.slice(0,4);
-				vm.pv2 = results.slice(4,8);
-			})
-			.error(function(){
-				vm.pv1 = undefined;
-				vm.pv2 = undefined;
-			});
+			console.log(vm.loc.email);
 
-			//console.log("user: " + vm.loc.user);
+			// Populate JSON chart
+			vm.populatePV();	
 
-			if(vm.loc.user != undefined){
-				
-				
-				var count = 0;
-				
-				vm.select = myFireBase.getSelectJSON();
+			// Determine data is in FireBase
+			if(vm.loc.email != undefined){
 
-				for (pv in vm.select){
-					//console.log('pv: ' + pv);
-					for (a in vm.select[pv]){
-						//console.log('a: ' + a);
-						//console.log('vm.select[pv[a]: ' + vm.select[pv][a]);
-						if(vm.select[pv][a]) count++;
-					}
-				}
+				// check if Email is valid
+				myFireBase.auth().$authWithPassword({
+					email: vm.loc.email,
+				  	password: 'nopassword'
+				}).then(function(authData) {
+				  	console.log("Logged in as:", authData.uid);
+				  	
+					// Try to get results based on user id
+					myFireBase.obj(authData.uid).$loaded()
+						.then(function(results){
 
-				console.log("count: " + count);
-				vm.selected_count = count; 
-				vm.goToState('s4');
-			}		
+						if(results.$value === null){
+							// Load default selection JSON object 
+							vm.loadDefaultSelection();
+						}
+						else{				
+						    vm.select = results;
+
+						    for (pv in vm.select){
+								//console.log('pv: ' + pv);
+								for (a in vm.select[pv]){
+									//console.log('a: ' + a);
+									//console.log('vm.select[pv[a]: ' + vm.select[pv][a]);
+									if(vm.select[pv][a]) vm.selected_count ++;
+								}
+							}
+							vm.goToState('s4');
+						}
+
+					}).catch(function(err) {
+						// Load default selection JSON object 
+						console.log("User does not exist");
+						vm.loadDefaultSelection();
+					});				  	
+
+				}).catch(function(error) {				
+				  	// Load default selection JSON object 
+					console.log("UserID Select Object does not exist");
+					vm.loadDefaultSelection();	
+				});
+			} // end if
 			else{
 				// Load default selection JSON object 
-				vm.loadDefaultSelectionJSON();		
-			}
-		};
+				vm.loadDefaultSelection();
+			} 
+		}; 	
 
 		/** State 1
 		 * Set toggle behavior on individual area of interest
@@ -128,41 +122,43 @@
 		*/
 		vm.toggleSelected = function(event, practiceVertical, areaOfInterest){
 
-			// Generate ripple effect
-			var areaBox, x, y, w, h, rect;
+			if(vm.current_state == 's1' || vm.current_state == 's2' || vm.current_state == 's6'){
+				// Generate ripple effect
+				var areaBox, x, y, w, h, rect;
 
-			areaBox = document.querySelector("." + areaOfInterest.ClassName);
+				areaBox = document.querySelector("." + areaOfInterest.ClassName);
 
-			rect = areaBox.getBoundingClientRect();
-			x = event.clientX - rect.left;
-			y = event.clientY - rect.top;
+				rect = areaBox.getBoundingClientRect();
+				x = event.clientX - rect.left;
+				y = event.clientY - rect.top;
 
-			w = $("." + areaOfInterest.ClassName + " .ripple").width();
-			h = $("." + areaOfInterest.ClassName + " .ripple").height();
+				w = $("." + areaOfInterest.ClassName + " .ripple").width();
+				h = $("." + areaOfInterest.ClassName + " .ripple").height();
 
-			x = x - (w/2);
-			y = y - (h/2);
-
-
-			$("." + areaOfInterest.ClassName + " .ripple").css({  top : y + 'px', left : x + 'px' });
+				x = x - (w/2);
+				y = y - (h/2);
 
 
-			$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
-			$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
+				$("." + areaOfInterest.ClassName + " .ripple").css({  top : y + 'px', left : x + 'px' });
 
-			// Update isSelected and global selected_count
-			// areaOfInterest.isSelected = !areaOfInterest.isSelected;
-			// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
-			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] = 
+
+				$("." + areaOfInterest.ClassName + " .ripple").removeClass("selected").width();
+				$("." + areaOfInterest.ClassName + " .ripple").addClass("selected");
+
+				// Update isSelected and global selected_count
+				// areaOfInterest.isSelected = !areaOfInterest.isSelected;
+				// areaOfInterest.isSelected ? selectionData.incrementSelectedCount() : selectionData.decrementSelectedCount()	
+				vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] = 
+					vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? 
+					false : true;
+				
 				vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? 
-				false : true;
-			
-			vm.select[practiceVertical.ClassName][areaOfInterest.ClassName] ? 
-				vm.selected_count++ : vm.selected_count--;
+					vm.selected_count++ : vm.selected_count--;
 
-			if (vm.current_state = 's1' && vm.selected_count > 0){
-				// switch state
-				vm.goToState('s2');		
+				if (vm.current_state = 's1' && vm.selected_count > 0){
+					// switch state
+					vm.goToState('s2');		
+				}
 			}
 
 		}; // end helper function for toggleSelected
@@ -174,59 +170,47 @@
 
 			// Sanitize name and email
 			// This is done via AngularJS Form... TBD
-
-			// Create Firebase Reference
-			var myFirebaseRef = new Firebase("https://torrid-inferno-2523.firebaseio.com/");
 			
 			// Generate random password
 			// var password = generatePassword();
 
-			// Create user
-			myFirebaseRef.createUser({
-			  // email    : vm.email,
-			  email: 'zhengsan@gmail.com',
-			  password : 'helloworld'
-			}, function(error, userData) {
-			  if (error) {
-			  	// Presentation
-			  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
-			  	$('.card-confirmation .success').hide();
-			  	$('.card-confirmation .error').show();
-			  } else {
-			  	// Save selection for new user
-				var userSelectionJSON = vm.select;
-				angular.fromJson(angular.toJson(userSelectionJSON));
-				//console.log(userSelectionJSON);
+			// Step 1: Create user
+			auth = myFireBase.auth();
+			auth.$createUser({
+				email: vm.newEmail,
+				password: "nopassword"
+			}).then(function(userData) { 
 
-				myFirebaseRef.child(userData.uid).set(
-				  userSelectionJSON, function(error){
-					  if (error) {
-					    // Presentation
+				// Step 2: Use userID to save selection
+			  	console.log("User " + userData.uid + " created successfully!");
+			  	
+			  	// Save selection for new user
+			  	obj = myFireBase.obj(userData.uid);
+				userSelectionJSON = vm.select;
+				angular.fromJson(angular.toJson(userSelectionJSON));
+
+				console.log(obj);
+
+				obj.$ref().set(userSelectionJSON, function(error) {
+					if (error) {
+						// Presentation
 					  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
 					  	$('.card-confirmation .success').hide();
 					  	$('.card-confirmation .error').show();
-					  } else {
-					    // Presentation
+					} else {
+						// Presentation
 					  	$('.card-confirmation .success').show();
 					  	$('.card-confirmation .error').hide();
-					  }
-				});	// End Create child			
+					}
+				});
 
-			  	// Display results
-			    //console.log("Successfully created user account with uid:", userData.uid);
-
-			  	// Sent password reset
-			  	myFirebaseRef.resetPassword({
-				  email : "zhengsan@gmail.com"
-				}, function(error) {
-				  if (error === null) {
-				    console.log("Password reset email sent successfully");
-				  } else {
-				    console.log("Error sending password reset email:", error);
-				  }
-				}); // end password reset
-			  }
-			}); // end create user
+			}).catch(function(error) { // oh no!
+			  	console.log("Error: ", error);
+			  	// Presentation
+			  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
+			  	$('.card-confirmation .success').hide();
+			  	$('.card-confirmation .error').show();			  	
+			});
 
 			// switch state
 			vm.goToState('s3');				
@@ -239,58 +223,107 @@
 		/** State 4
 		* Show user's link and share and edit options
 		*/		
+		vm.modifyChart = function(){
+
+		};		
 
 		/** State 5
 		* Authenticate email and password 
 		*/			
 		vm.authenticateUser = function(){
-			// Create Firebase Reference
-			var myFirebaseRef = new Firebase("https://torrid-inferno-2523.firebaseio.com/");
-			
-			ref.authWithPassword({
-			  email    : "bobtony@firebase.com",
-			  password : "correcthorsebatterystaple"
-			}, function(error, authData) {
-			  if (error) {
-			    console.log("Login Failed!", error);
-			  } else {
-			    console.log("Authenticated successfully with payload:", authData);
-			  }
-			});	
+			console.log("User email: " + vm.userEmail);	
+
+			auth = myFireBase.auth();
+
+			auth.$authWithPassword({
+				email: vm.userEmail,
+			  	password: 'nopassword'
+			}).then(function(authData) {
+			  	console.log("Logged in as:", authData.uid);
+
+			  	// Go to state modify
+			  	vm.goToState('s6');
+
+			}).catch(function(error) {				
+			  	console.error("Authentication failed:", error);
+
+			  	// PRESENTATION
+			  	$('.card-authenticate .error .msg').html("<strong>" + error + "</strong>"); 	
+			  	$('.card-authenticate .form').hide();			  	
+			  	$('.card-authenticate .error').show();
+			});
 		};
+		/** State 5 
+		* Reset password
+		*/			
+		vm.resetUserPassword = function(){
+			console.log("User email: " + vm.userEmail);
+			console.log("User password: " + vm.userPassword);	
+
+			auth = myFireBase.auth();
+
+			auth.$authWithPassword({
+				email: vm.userEmail,
+			  	password: vm.userPassword
+			}).then(function(authData) {
+			  	console.log("Logged in as:", authData.uid);
+
+			  	// Go to state modify
+			  	vm.goToState('s6');
+
+			}).catch(function(error) {
+				
+			  	// Go to state modify
+			  	vm.goToState('s6');				
+			  	console.error("Authentication failed:", error);
+			});
+		};		
 
 		/** State 6
 		* Save or cancel changes 
 		*/	
+		vm.saveChanges = function(){
+
+		};
 
 		/** HELPER function
-		* Load default selection
+		* Populate PV
 		*/
-		vm.loadDefaultSelectionJSON = function(){
-			/**
-			* Create JSON object for the default selection
-			*/
+		vm.populatePV = function(){
+			// Populate JSON chart
+			$http.get('/./assets/js/uxd-practice-verticals.json')
+			.success(function(results){
+				console.log('success');
+				vm.pv1 = results.slice(0,4);
+				vm.pv2 = results.slice(4,8);
+			})
+			.error(function(){
+				console.log("Error: cannot get default PVs");
+			});	
+		};
+
+		/** HELPER function
+		* Load default selections
+		*/
+		vm.loadDefaultSelection = function(){
+
+			vm.goToState('s1');	
+
 			$http.get('/./assets/js/default-selection.json')
 			.success(function(results){
-				
-				var count = 0;
-
 				vm.select = results;
-
+				vm.selected_count = 0; 
 				for (pv in vm.select){
 					for (a in vm.select[pv]){
-						if(vm.select[pv][a]) count++;
+						if(vm.select[pv][a]) vm.selected_count++;
 					}
 				}
 				console.log('using default selection');
-				vm.goToState('s1');
 			})	
 			.error(function(){
-				// vm.select = undefined;
-				vm.goToState('s1');
-				console.log('error loading default selection');
-			});				
-		}
+				console.log('error with default selection');
+			});			
+		};
 
 		/** HELPER function
 		* Switch between states
