@@ -104,36 +104,44 @@ body{
 		}
 
 
-		.card-save, .card-authenticate{
+		.card-save, 
+		.card-authenticate,
+		.card-reset{
 			.form-group{
 				padding: 0 10%;
 				margin: 0;
 			}
 		}
 
-		.card-confirmation{
-			.error, .success{
-				display: none;
-			}
-		}
-
-		.card-authenticate{
-			.error{
-				display: none;
-			}
-		}		
-
 		&.s1{
 			.card-save, 
 			.card-confirmation, 
 			.card-user, 
 			.card-authenticate, 
-			.card-modify{
+			.card-reset,
+			.card-modify,
+			.card-updated{
 				display: none;
 				height: 0;
 			}
 			.card-default{
 				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}
 			}
 		}
 		&.s2{
@@ -141,12 +149,30 @@ body{
 			.card-confirmation, 
 			.card-user, 
 			.card-authenticate, 
-			.card-modify{
+			.card-reset,
+			.card-modify,
+			.card-updated{
 				display: none;
 				height: 0;
 			}
 			.card-save{
 				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}				
 			}			
 		}
 		&.s3{
@@ -154,25 +180,61 @@ body{
 			.card-save, 
 			.card-user, 
 			.card-authenticate, 
-			.card-modify{
+			.card-reset,
+			.card-modify,
+			.card-updated{
 				display: none;
 				height: 0;
 			}
 			.card-confirmation{
 				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}				
 			}
 		}
 		&.s4{
 			.card-default, 
 			.card-save, 
 			.card-confirmation, 
-			.card-authenticate, 
-			.card-modify{
+			.card-authenticate,
+			.card-reset, 
+			.card-modify,
+			.card-updated{
 				display: none;
 				height: 0;
 			}
 			.card-user{
 				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}				
 			}
 		}
 		&.s5{
@@ -180,27 +242,141 @@ body{
 			.card-save, 
 			.card-confirmation, 
 			.card-user, 
-			.card-modify{
+			.card-reset,
+			.card-modify,
+			.card-updated{
 				display: none;
 				height: 0;
 			}
 			.card-authenticate{
 				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}				
 			}
-		}		
+		}	
 		&.s6{
 			.card-default, 
 			.card-save, 
 			.card-confirmation, 
 			.card-user, 
-			.card-authenticate{
-				visibility: hidden;
+			.card-authenticate,
+			.card-modify,
+			.card-updated{
+				display: none;
+				height: 0;
+			}
+			.card-reset{
+				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error, .success{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default, .success{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}	
+				&.is_success{
+					.default, .error{
+						display: none;
+					}
+					.success{
+						display: block;
+					}
+				}							
+			}
+		}			
+		&.s7{
+			.card-default, 
+			.card-save, 
+			.card-confirmation, 
+			.card-user, 
+			.card-authenticate,
+			.card-reset,
+			.card-updated{
+				display: none;
 				height: 0;
 			}
 			.card-modify{
-				visibility: visible;
+				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}				
 			}
 		}
+		&.s8{
+			.card-default, 
+			.card-save, 
+			.card-confirmation, 
+			.card-user, 
+			.card-authenticate,
+			.card-reset,
+			.card-modify{
+				display: none;
+				height: 0;
+			}
+			.card-updated{
+				display: block;
+				&.is_default{
+					.default{
+						display: block;
+					}
+					.error{
+						display: none;
+					}
+				}
+				&.is_error{
+					.default{
+						display: none;
+					}
+					.error{
+						display: block;
+					}
+				}	
+				&.is_success{
+					.default, .error{
+						display: none;
+					}
+					.success{
+						display: block;
+					}
+				}								
+			}
+		}		
 	}
 
 	&.learn-more{
