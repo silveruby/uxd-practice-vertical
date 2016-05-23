@@ -67,22 +67,6 @@
 		};
 	}]);
 
-   	uxdpv.controller('myCtrl', function($scope, $document) {
-		var top = 400;
-		var duration = 2000; //milliseconds
-
-		//Scroll to the exact position
-		$document.scrollTop(top, duration).then(function() {
-		  console && console.log('You just scrolled to the top!');
-		});
-
-		var offset = 30; //pixels; adjust for floating menu, context etc
-		//Scroll to #some-id with 30 px "padding"
-		//Note: Use this in a directive, not with document.getElementById 
-		var someElement = angular.element(document.getElementById('some-id'));
-		$document.scrollToElement(someElement, offset, duration);
-	});
-
 	/**
 	 * Main controller
 	*/
@@ -136,7 +120,7 @@
 						console.log(results);
 					    vm.select = results.select;
 					    vm.msgBox.user = results.name;
-					    vm.msgBox.link = vm.msgBox.link + vm.loc.email;
+					    vm.msgBox.link = vm.current_link + vm.loc.email;
 
 					    for (pv in vm.select){
 							for (a in vm.select[pv]){
