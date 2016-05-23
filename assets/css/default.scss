@@ -64,7 +64,7 @@ $material_orange_500: #FF9800;
 $material_orange_900: #E65100;
 
 /* OVERRIDING BOOTSTRAP STYLES */
-body{
+body, html{
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -87,306 +87,325 @@ body{
 		padding-right:0;
 		padding-left:0;
 	}
-
-	&.title{
-		margin: 2em 0;
-	}
-
-	&.messageBox{
-		margin: 1em 0 2em 0;
-
-		.jumbotron{
-			padding: 1.5em;
-			height: 200px;
-			margin-bottom: 30px;
-		    color: inherit;
-		    background-color: #eee;
-		}
-
-
-		.card-save, 
-		.card-authenticate,
-		.card-reset{
-			.form-group{
-				padding: 0 10%;
-				margin: 0;
-			}
-		}
-
-		&.s1{
-			.card-save, 
-			.card-confirmation, 
-			.card-user, 
-			.card-authenticate, 
-			.card-reset,
-			.card-modify,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-default{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}
-			}
-		}
-		&.s2{
-			.card-default, 
-			.card-confirmation, 
-			.card-user, 
-			.card-authenticate, 
-			.card-reset,
-			.card-modify,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-save{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}				
-			}			
-		}
-		&.s3{
-			.card-default, 
-			.card-save, 
-			.card-user, 
-			.card-authenticate, 
-			.card-reset,
-			.card-modify,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-confirmation{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}				
-			}
-		}
-		&.s4{
-			.card-default, 
-			.card-save, 
-			.card-confirmation, 
-			.card-authenticate,
-			.card-reset, 
-			.card-modify,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-user{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}				
-			}
-		}
-		&.s5{
-			.card-default, 
-			.card-save, 
-			.card-confirmation, 
-			.card-user, 
-			.card-reset,
-			.card-modify,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-authenticate{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}				
-			}
-		}	
-		&.s6{
-			.card-default, 
-			.card-save, 
-			.card-confirmation, 
-			.card-user, 
-			.card-authenticate,
-			.card-modify,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-reset{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error, .success{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default, .success{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}	
-				&.is_success{
-					.default, .error{
-						display: none;
-					}
-					.success{
-						display: block;
-					}
-				}							
-			}
-		}			
-		&.s7{
-			.card-default, 
-			.card-save, 
-			.card-confirmation, 
-			.card-user, 
-			.card-authenticate,
-			.card-reset,
-			.card-updated{
-				display: none;
-				height: 0;
-			}
-			.card-modify{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}				
-			}
-		}
-		&.s8{
-			.card-default, 
-			.card-save, 
-			.card-confirmation, 
-			.card-user, 
-			.card-authenticate,
-			.card-reset,
-			.card-modify{
-				display: none;
-				height: 0;
-			}
-			.card-updated{
-				display: block;
-				&.is_default{
-					.default{
-						display: block;
-					}
-					.error{
-						display: none;
-					}
-				}
-				&.is_error{
-					.default{
-						display: none;
-					}
-					.error{
-						display: block;
-					}
-				}	
-				&.is_success{
-					.default, .error{
-						display: none;
-					}
-					.success{
-						display: block;
-					}
-				}								
-			}
-		}		
-	}
-
-	&.learn-more{
-		margin: 2em 0 5em 0;
-	}
 }
+
+.scroll-arrow {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+#message-box{
+	margin-top: 2em;
+	margin-bottom: 2em;
+
+	.msgContainer{	
+		margin-top: 4em;
+		margin-bottom: 1em;
+		min-height: 200px;
+
+		h1{
+			font-size: 36px;
+		}
+
+		p{
+			font-size: 18px;
+		}
+
+		a{
+			font-size: 18px;
+		}
+
+		button{
+			font-size: 18px;
+		}
+	}
+
+	.card-save, 
+	.card-authenticate,
+	.card-reset{
+		.form-group{
+			padding: 0 10%;
+			margin: 0;
+		}
+	}
+
+	.s1{
+		.card-save, 
+		.card-confirmation, 
+		.card-user, 
+		.card-authenticate, 
+		.card-reset,
+		.card-modify,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-default{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}
+		}
+	}
+	.s2{
+		.card-default, 
+		.card-confirmation, 
+		.card-user, 
+		.card-authenticate, 
+		.card-reset,
+		.card-modify,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-save{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}				
+		}			
+	}
+	.s3{
+		.card-default, 
+		.card-save, 
+		.card-user, 
+		.card-authenticate, 
+		.card-reset,
+		.card-modify,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-confirmation{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}				
+		}
+	}
+	.s4{
+		.card-default, 
+		.card-save, 
+		.card-confirmation, 
+		.card-authenticate,
+		.card-reset, 
+		.card-modify,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-user{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}				
+		}
+	}
+	.s5{
+		.card-default, 
+		.card-save, 
+		.card-confirmation, 
+		.card-user, 
+		.card-reset,
+		.card-modify,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-authenticate{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}				
+		}
+	}	
+	.s6{
+		.card-default, 
+		.card-save, 
+		.card-confirmation, 
+		.card-user, 
+		.card-authenticate,
+		.card-modify,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-reset{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error, .success{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default, .success{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}	
+			&.is_success{
+				.default, .error{
+					display: none;
+				}
+				.success{
+					display: block;
+				}
+			}							
+		}
+	}			
+	.s7{
+		.card-default, 
+		.card-save, 
+		.card-confirmation, 
+		.card-user, 
+		.card-authenticate,
+		.card-reset,
+		.card-updated{
+			display: none;
+			height: 0;
+		}
+		.card-modify{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}				
+		}
+	}
+	.s8{
+		.card-default, 
+		.card-save, 
+		.card-confirmation, 
+		.card-user, 
+		.card-authenticate,
+		.card-reset,
+		.card-modify{
+			display: none;
+			height: 0;
+		}
+		.card-updated{
+			display: block;
+			&.is_default{
+				.default{
+					display: block;
+				}
+				.error{
+					display: none;
+				}
+			}
+			&.is_error{
+				.default{
+					display: none;
+				}
+				.error{
+					display: block;
+				}
+			}	
+			&.is_success{
+				.default, .error{
+					display: none;
+				}
+				.success{
+					display: block;
+				}
+			}								
+		}
+	}		
+}
+
+#learnMore{
+	
+}
+
 
 /* NAVBAR */
 nav.navbar{
 	background-color: rgba(255, 255, 255, 0.9);
+	a.active{
+		color: red;
+	}
 }
 
 /* TOP */

@@ -7,6 +7,7 @@ Project: UX Design Practice Verticals
 - AngularJS (Javascript Framework)
 - Bootstrap (Front-End Framework)
 - Firebase (Database Platform)
+- [Angular-Scroll](https://github.com/oblador/angular-scroll) (AngularJS plugin)
 
 ---
 
