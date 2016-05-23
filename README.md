@@ -4,17 +4,10 @@ Project: UX Design Practice Verticals
 
 ## Technology
 
-- AngularJS (Javascript Framework)
-- Bootstrap (Front-End Framework)
-- Firebase (Database Platform)
+- [AngularJS 1](https://angularjs.org/) (Javascript Framework)
+- [Bootstrap v3.3.6](http://getbootstrap.com/) (Front-End Framework)
+- [Firebase](https://firebase.google.com/) (Database Platform)
 - [Angular-Scroll](https://github.com/oblador/angular-scroll) (AngularJS plugin)
-
----
-
-## AngularJS
-
-- $compiler - Translates AngularJS HTML to HTML
-- $interpolate
 
 ---
 

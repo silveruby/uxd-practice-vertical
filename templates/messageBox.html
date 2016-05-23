@@ -4,21 +4,22 @@
         <!-- 1. Default UXDPV -->
         <div class="card-default fade {{ current_status }}">
             <div class="default">
-                <h1>Select your area of interest and share your results!</h1>
-                <p>This site contains a list of UX activities categorized into eight practice verticals.</p>
-                <a href>Learn more about practice verticals</a>
+                <h1>Are you a UX partitioner?</h1>
+                <p>Create a practice vertical chart and share it with the world!</p>
+                <a href="#learn-more">Learn more about practice verticals</a>
             </div>
             <div class="error">
                 <h1>Hm... we couldn't find your UXDPV</h1>
-                <div><mark>{{ msgBox.link }}</mark></div>
-                <div>However, you can create a new one by making selections below.</small></div>                
+                <p><mark>{{ msgBox.link }}</mark></p>
+                <p>However, you can create a new one by making selections below.</p>
             </div>
         </div>
 
        <!-- 2. Save Options with Name and Email Input -->
         <div class="card-save fade {{ current_status }}">        
             <div class="default">
-                <h1>Looking good? Do you want to save this chart?</h1>
+                <h1>Looking good!</h1>
+                <p>Do you want to save this chart?</p>
                 <form>
                     <div class="form-group">
                         <input type="name" ng-model="newName" class="form-control text-center" placeholder="Name"></input>
@@ -37,23 +38,23 @@
         <div class="card-confirmation fade {{ current_status }}"> 
             <div class="default">
                 <h1>Hey {{ msgBox.user }}, your chart is live!</h1>
-                <div>You can edit the chart with this password <strong>{{ msgBox.password }}</strong></div>
-                <div><a href ng-click="goToState('s4', 'is_default')">View and share your UXDPV chart</a></div>
+                <p>You can edit the chart with this password <strong>{{ msgBox.password }}</strong></p>
+                <a href ng-click="goToState('s4', 'is_default')">View and share your UXDPV chart</a>
             </div>
             <div class="error">
                 <h1>Uh oh! Something is wrong!</h1>
-                <div class="msg"></div>&nbsp;
+                <p class="msg"></p>&nbsp;
                 <a href ng-click="goToState('s2', 'is_default')">Please retry</a>
             </div>
         </div>
 
         <!-- 4. User UXDPV -->
         <div class="card-user fade {{ current_status }}">
-                <div class="default">
+            <div class="default">
                 <h1>{{ msgBox.user }}'s Practice Vertical</h1>
-                <div><mark>{{ msgBox.link }}</mark></div>
-                <div>Share on Twitter, Facebook or LinkedIn</div>
-                <div><small><a href ng-click="goToState('s5', 'is_default')">Edit this chart</a></small></div>
+                <p><mark>{{ msgBox.link }}</mark></p>
+                <p>Share on Twitter, Facebook or LinkedIn</p>
+                <a href ng-click="goToState('s5', 'is_default')">Edit this chart</a>
             </div>
         </div>
 
@@ -81,8 +82,8 @@
             </div>
             <div class="error">
                 <h1>Sorry, the credentials do not match</h1>
-                <div class="msg"></div>&nbsp;
-                <small><a href ng-click="goToState('s4')">Go back to the chart</a></small> 
+                <p class="msg"></p>&nbsp;
+                <a href ng-click="goToState('s4')">Go back to the chart</a>
             </div>
         </div>
 
@@ -90,23 +91,23 @@
         <div class="card-reset fade {{ current_status }}">  
             <div class="default form">
                 <h1>Can’t remember your password?</h1>
-                <div>Would you like us to send you the password reset link?</div>
+                <p>Would you like us to send you the password reset link?</p>
                  <form>
                     <div class="form-group">
                         <button type="submit" class="form-control" ng-click="resetUserPassword()">Reset password via email</button>
                     </div>
                 </form>
-                <small><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></small>                
+                <a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a>              
             </div>
             <div class="success">
                 <h1>Check your email</h1>
-                <div>Password reset email sent successfully!</div>
-                <small><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></small> 
+                <p>Password reset email sent successfully!</p>
+                <a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a>
             </div>
             <div class="error">
                 <h1>Error with password reset email</h1>
-                <div>Please retry again!</div>
-                <small><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></small> 
+                <p>Please retry again!</p>
+                <a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a> 
             </div>          
         </div>
 
@@ -114,9 +115,9 @@
         <div class="card-modify fade {{ current_status }}"> 
             <div class="default">
                 <h1>Alright {{ msgBox.user }}, let's make some edits!</h1>
-                <div>When you are ready, save your chart</div>
+                <p>When you are ready, save your chart</p>
                 <button type="submit" class="form-control" ng-click="saveChanges()">Save my chart</button>
-                <small><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></small>                
+                <a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a>            
             </div>
         </div>
 
@@ -124,13 +125,13 @@
         <div class="card-updated fade {{ current_status }}">   
             <div class="default">
                 <h1>Great, your chart is updated!</h1>
-                <div>Keep it up! UX rockstar!</div>
-                <small><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></small> 
+                <p>Keep it up! UX rockstar!</p>
+                <a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a>
             </div>
             <div class="error">
                 <h1>Uh oh, we were unable to save your chart</h1>
-                <div>Please retry again or contact us</div>
-                <small><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></small> 
+                <p>Please retry again or contact us</p>
+                <a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a>
             </div>
         </div>
     </div>
