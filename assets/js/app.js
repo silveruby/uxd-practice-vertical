@@ -11,7 +11,7 @@
 	uxdpv.directive('messageBox', function(){
 		return {
 			restrict: 'E',
-			templateUrl: 'messageBox.html'
+			templateUrl: 'templates/messageBox.html'
 		};
 	});
 	/**
@@ -20,7 +20,7 @@
 	uxdpv.directive('practiceVerticals', function(){
 		return {
 			restrict: 'E',
-			templateUrl: 'practiceVerticals.html'
+			templateUrl: 'templates/practiceVerticals.html'
 		};
 	});	
 	/**
@@ -29,7 +29,7 @@
 	uxdpv.directive('learnMore', function(){
 		return {
 			restrict: 'E',
-			templateUrl: 'learnMore.html'
+			templateUrl: 'templates/learnMore.html'
 		};
 	});	
 	/**
@@ -38,7 +38,7 @@
 	uxdpv.directive('contact', function(){
 		return {
 			restrict: 'E',
-			templateUrl: 'contact.html'
+			templateUrl: 'templates/contact.html'
 		};
 	});			
 
