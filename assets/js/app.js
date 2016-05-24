@@ -117,7 +117,7 @@
 						//vm.goToState('s1', 'is_error');
 					}
 					else{				
-						console.log(results);
+						//console.log(results);
 					    vm.select = results.select;
 					    vm.msgBox.user = results.name;
 					    vm.msgBox.link = vm.current_link + vm.loc.email;
@@ -139,7 +139,7 @@
 					vm.msgBox.link = vm.msgBox.link + vm.loc.email;
 
 					// Load default selection JSON object 
-					console.log("No record for this userID");
+					//console.log("No record for this userID");
 					vm.loadDefaultSelection('is_error');
 				});				  	
 			} 
@@ -223,7 +223,7 @@
 			}).then(function(userData) { 
 
 				// Step 2: Use userID to save selection
-			  	console.log("User " + userData.uid + " created successfully!");
+			  	//console.log("User " + userData.uid + " created successfully!");
 
 			  	// Normalize email
 			  	normalizeEmail = vm.normalizeEmail(vm.msgBox.email);
@@ -247,7 +247,7 @@
 					vm.goToState('s3', 'is_error');	
 				});
 			}).catch(function(error) {
-			  	console.log("Error: ", error);
+			  	//console.log("Error: ", error);
 			  	// If error creating user account
 			  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
 			  	// switch state
@@ -267,7 +267,7 @@
 		* Authenticate email and password 
 		*/			
 		vm.authenticateUser = function(){
-			console.log("User email: " + vm.msgBox.email);	
+			//console.log("User email: " + vm.msgBox.email);	
 
 			myFireBase.auth().$authWithPassword({
 				email: vm.msgBox.email,
@@ -278,7 +278,7 @@
 			  	vm.goToState('s7', 'is_default');
 
 			}).catch(function(error) {				
-			  	console.error("Authentication failed:", error);
+			  	//console.error("Authentication failed:", error);
 
 			  	// PRESENTATION
 			  	$('.card-authenticate .error .msg').html("<strong>" + error + "</strong>"); 	
@@ -290,7 +290,7 @@
 		* Reset password
 		*/			
 		vm.resetUserPassword = function(){
-			console.log("User password: " + vm.msgBox.email);	
+			//console.log("User password: " + vm.msgBox.email);	
 
 			myFireBase.auth().$resetPassword({
 				email: vm.msgBox.email
@@ -321,7 +321,7 @@
 			obj.name = vm.msgBox.user;
 
 			obj.$save().then(function() {
-				console.log("updated successfully");
+				//console.log("updated successfully");
 			 	// If error saving JSON selection
 				vm.goToState('s8', 'is_default');					
 			}, function(error) {
@@ -342,7 +342,7 @@
 				vm.pv2 = results.slice(4,8);
 			})
 			.error(function(){
-				console.log("Error: cannot get default PVs");
+				//console.log("Error: cannot get default PVs");
 			});	
 		};
 
@@ -364,7 +364,7 @@
 				vm.goToState('s1', status);
 			})	
 			.error(function(){
-				console.log('error with default selection');
+				//console.log('error with default selection');
 
 				// Display default, no email detected
 				vm.goToState('s1', 'is_error');				
@@ -379,8 +379,8 @@
 			vm.current_state = state;
 			vm.current_status = status;
 
-			console.log("current state: " + vm.current_state);
-			console.log("current status: " + vm.current_status);
+			//console.log("current state: " + vm.current_state);
+			//console.log("current status: " + vm.current_status);
 
 			$('.fade').removeClass('fadein');
 
