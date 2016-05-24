@@ -210,7 +210,7 @@
 			// This is done via AngularJS Form... TBD
 			
 			// Update message box variables
-			vm.msgBox.password = 'password'
+			vm.msgBox.password = 'uxdpv'
 			vm.msgBox.email = vm.newEmail;
 			vm.msgBox.user = vm.newName;
 			vm.msgBox.link = vm.current_link + vm.msgBox.email;

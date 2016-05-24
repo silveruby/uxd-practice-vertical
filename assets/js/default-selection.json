@@ -1,7 +1,7 @@
 {  
    "pv_bca":{
-      "pv_bca_cm":true,
-      "pv_bca_pm":true,
+      "pv_bca_cm":false,
+      "pv_bca_pm":false,
       "pv_bca_pd":false,
       "pv_bca_bi":false,
       "pv_bca_m":false,

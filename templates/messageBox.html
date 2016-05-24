@@ -38,7 +38,7 @@
         <div class="card-confirmation fade {{ current_status }}"> 
             <div class="default">
                 <h1>Hey {{ msgBox.user }}, your chart is live!</h1>
-                <p>You can edit the chart with this password <strong>{{ msgBox.password }}</strong></p>
+                <p>You can edit the chart with default password <strong>{{ msgBox.password }}</strong></p>
                 <a href ng-click="goToState('s4', 'is_default')">View and share your UXDPV chart</a>
             </div>
             <div class="error">
@@ -54,6 +54,8 @@
                 <h1>{{ msgBox.user }}'s Practice Vertical</h1>
                 <p><mark>{{ msgBox.link }}</mark></p>
                 <p>Share on Twitter, Facebook or LinkedIn</p>
+                <a href="http://www.uxdpv.io">Create your own chart</a>
+                    | 
                 <a href ng-click="goToState('s5', 'is_default')">Edit this chart</a>
             </div>
         </div>
