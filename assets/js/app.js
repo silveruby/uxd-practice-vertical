@@ -77,7 +77,7 @@
 		var vm = $scope;
 		vm.current_state = '';
 		vm.current_status = '';
-		vm.current_link = 'http://www.uxpvd.io/?email='
+		vm.current_link = 'http://www.uxdpv.io/?email='
 		vm.selected_count = 0;
 		vm.pv1 = [];
 		vm.pv2 = [];
