@@ -112,9 +112,6 @@
 
 						// Load default selection JSON object 
 						vm.loadDefaultSelection('is_error');
-
-						// Go to state 1
-						//vm.goToState('s1', 'is_error');
 					}
 					else{				
 						//console.log(results);
@@ -353,6 +350,8 @@
 
 			$http.get('/./assets/js/default-selection.json')
 			.success(function(results){
+				// Display default, no email detected
+				vm.goToState('s1', status);				
 				vm.select = results;
 				vm.selected_count = 0; 
 				for (pv in vm.select){
@@ -360,13 +359,9 @@
 						if(vm.select[pv][a]) vm.selected_count++;
 					}
 				}
-				// Display default, no email detected
-				vm.goToState('s1', status);
 			})	
 			.error(function(){
-				//console.log('error with default selection');
-
-				// Display default, no email detected
+				// Display default
 				vm.goToState('s1', 'is_error');				
 			});			
 		};
