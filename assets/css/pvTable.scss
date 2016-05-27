@@ -129,13 +129,13 @@ $material_orange_900: #E65100;
 }
 /* PRACTICE VERTICAL TABLE STYLES */
 #uxdpv{
-	&.s1, &.s2, &.s7{
+	.s1, .s2, .s7{
 		td{
 			cursor: pointer;
 		}
 	}
 
-	&.s3, &.s4, &.s5, &.s6{
+	.s3, .s4, .s5, .s6, .s8{
 		td{
 			cursor: no-drop;
 		}
@@ -147,10 +147,6 @@ $material_orange_900: #E65100;
 
 			table{
 				font-size: 1.5em;
-				
-				tr{
-					cursor: pointer; 
-				}
 
 				td, th{
 					padding: 0 .5em;

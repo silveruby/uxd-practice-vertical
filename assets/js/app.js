@@ -95,6 +95,9 @@
 			// Detect URL parameter
 			vm.loc = $location.path('/').search();
 
+			// Populate JSON chart
+			vm.populatePV();
+
 			// Determine data is in FireBase
 			if(vm.loc.email != undefined && vm.loc.email != ''){	  	
 				  	
@@ -363,9 +366,6 @@
 						if(vm.select[pv][a]) vm.selected_count++;
 					}
 				}
-
-				// Populate JSON chart
-				vm.populatePV();
 			})	
 			.error(function(){
 				// Display default
