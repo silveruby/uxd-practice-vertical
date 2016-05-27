@@ -377,43 +377,9 @@
 		* Switch between states
 		*/
 		vm.goToState = function(state, status){
-			
-			//console.log("gotostate");
 
 			vm.current_state = state;
 			vm.current_status = status;
-
-			//console.log("current state: " + vm.current_state);
-			//console.log("current status: " + vm.current_status);
-
-			$('.fade').removeClass('fadein');
-
-			switch (state){
-        		case 's1':
-        			$('.card-default').addClass('fadein');
-        			break;
-        		case 's2':
-        			$('.card-save').addClass('fadein');	
-        			break;
-        		case 's3':
-        			$('.card-confirmation').addClass('fadein');	
-        			break;	 
-        		case 's4':
-        			$('.card-user').addClass('fadein');	
-        			break;	
-        		case 's5':
-        			$('.card-authenticate').addClass('fadein');	
-        			break;	
-        		case 's6':
-        			$('.card-reset').addClass('fadein');	
-        			break;	        			
-        		case 's7':
-        			$('.card-modify').addClass('fadein');	
-        			break;	 
-        		case 's8':
-        			$('.card-updated').addClass('fadein');	
-        			break;	        			       			        			           	
-        	} // end switch state
 		};
 
 		/** HELPER function

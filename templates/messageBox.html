@@ -2,12 +2,13 @@
     <div class="col-xs-12 col-md-offset-2 col-md-8 text-center msgContainer">
 
         <!-- 1. Default UXDPV -->
-        <div class="card-default fade {{ current_status }}">
+        <div class="card-default fade {{ current_status }}" 
+            ng-class="{ 'fadein' : current_state == 's1' }">
             <div class="default">
                 <h1>Are you a UX practitioner?</h1>
                 <p>Create a Practice Verticals chart and share it with the world!</p>
                 <p><strong>Select your area of interests on the chart below</strong></p>
-                <a href="#learn-more">Learn about UXD Design Practice Verticals</a>
+                <a href="#learn-more">Learn about UX Design Practice Verticals</a>
             </div>
             <div class="error">
                 <h1>Hm... we couldn't find your UXDPV</h1>
@@ -17,7 +18,8 @@
         </div>
 
        <!-- 2. Save Options with Name and Email Input -->
-        <div class="card-save fade {{ current_status }}">        
+        <div class="card-save fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's2' }">               
             <div class="default">
                 <h1>Looking good!</h1>
                 <p>Do you want to save this chart?</p>
@@ -36,7 +38,8 @@
         </div>
 
         <!-- 3. Confirmation -->
-        <div class="card-confirmation fade {{ current_status }}"> 
+        <div class="card-confirmation fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's3' }">            
             <div class="default">
                 <h1>Hey {{ msgBox.user }}, your Practice Verticals is live!</h1>
                 <p>Your default password is <strong>{{ msgBox.password }}</strong></p>
@@ -52,7 +55,8 @@
         </div>
 
         <!-- 4. User UXDPV -->
-        <div class="card-user fade {{ current_status }}">
+        <div class="card-user fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's4' }">   
             <div class="default">
                 <h1>{{ msgBox.user }}'s Practice Verticals</h1>
                 <p><mark>{{ msgBox.link }}</mark></p>
@@ -64,7 +68,8 @@
         </div>
 
         <!-- 5. User Auth with Email & Password Input -->
-        <div class="card-authenticate fade {{ current_status }}"> 
+        <div class="card-authenticate fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's5' }">   
             <div class="default form">
                 <h1>Let's make sure this is your chart</h1>
                 <form>
@@ -93,7 +98,8 @@
         </div>
 
         <!-- 6. Reset Password -->
-        <div class="card-reset fade {{ current_status }}">  
+        <div class="card-reset fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's6' }">     
             <div class="default form">
                 <h1>Can’t remember your password?</h1>
                 <p>Would you like us to send you the password reset link?</p>
@@ -117,7 +123,8 @@
         </div>
 
         <!-- 7. Modify UXDPV -->
-        <div class="card-modify fade {{ current_status }}"> 
+        <div class="card-modify fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's7' }">    
             <div class="default">
                 <h1>Alright {{ msgBox.user }}, let's make some edits!</h1>
                 <p>When you are ready, save your chart</p>
@@ -127,7 +134,8 @@
         </div>
 
         <!-- 8. Confirmation -->
-        <div class="card-updated fade {{ current_status }}">   
+        <div class="card-updated fade {{ current_status }}"
+            ng-class="{ 'fadein' : current_state == 's8' }">      
             <div class="default">
                 <h1>Great, your chart is updated!</h1>
                 <p>Keep it up! UX rockstar!</p>
