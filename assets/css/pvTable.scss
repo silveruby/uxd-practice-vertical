@@ -101,6 +101,32 @@ $material_orange_900: #E65100;
 	animation: ripple 0.5s 1 ease-out;
 }
 
+#learn-more{
+	p.pv_bca strong{
+		color: $material_red_900;
+	}
+	p.pv_ue strong{
+		color: $material_purple_900;
+	}
+	p.pv_uep strong{
+		color: $material_indigo_900;
+	}
+	p.pv_cp strong{
+		color: $material_light_blue_900;
+	}
+	p.pv_ia strong{
+		color: $material_teal_900;
+	}
+	p.pv_id strong{
+		color: $material_light_green_900;
+	}
+	p.pv_vd strong{
+		color: $material_yellow_900;
+	}
+	p.pv_cs strong{
+		color: $material_orange_900;
+	}	
+}
 /* PRACTICE VERTICAL TABLE STYLES */
 #uxdpv{
 	&.s1, &.s2, &.s7{
@@ -122,6 +148,10 @@ $material_orange_900: #E65100;
 			table{
 				font-size: 1.5em;
 				
+				tr{
+					cursor: pointer; 
+				}
+
 				td, th{
 					padding: 0 .5em;
 					text-align: center;

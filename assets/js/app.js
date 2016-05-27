@@ -35,10 +35,10 @@
 	/**
 	 * Directives used by module
 	*/
-	uxdpv.directive('contact', function(){
+	uxdpv.directive('aboutSite', function(){
 		return {
 			restrict: 'E',
-			templateUrl: '/templates/contact.html'
+			templateUrl: '/templates/aboutSite.html'
 		};
 	});			
 
@@ -143,10 +143,7 @@
 			else{	
 				// Load default selection JSON object 
 				vm.loadDefaultSelection('is_default');	
-			} 
-
-			// Populate JSON chart
-			vm.populatePV();				
+			} 				
 		}; 	
 
 		/** State 1
@@ -193,6 +190,9 @@
 				if (vm.current_state == 's1' && vm.selected_count > 0){
 					// switch state
 					vm.goToState('s2', 'is_default');		
+				}
+				else if (vm.current_state == 's2' && vm.selected_count == 0){
+					vm.goToState('s1', 'is_default');
 				}
 			}
 
@@ -332,11 +332,15 @@
 		* Populate PV
 		*/
 		vm.populatePV = function(){
+
 			// Populate JSON chart
 			$http.get('/./assets/js/uxd-practice-verticals.json')
 			.success(function(results){
 				vm.pv1 = results.slice(0,4);
 				vm.pv2 = results.slice(4,8);
+
+				// Turn on bootstrap popover
+				//$('[data-toggle="popover"]').popover();
 			})
 			.error(function(){
 				//console.log("Error: cannot get default PVs");
@@ -359,6 +363,9 @@
 						if(vm.select[pv][a]) vm.selected_count++;
 					}
 				}
+
+				// Populate JSON chart
+				vm.populatePV();
 			})	
 			.error(function(){
 				// Display default
@@ -371,6 +378,8 @@
 		*/
 		vm.goToState = function(state, status){
 			
+			console.log("gotostate");
+
 			vm.current_state = state;
 			vm.current_status = status;
 

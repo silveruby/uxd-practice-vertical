@@ -18,14 +18,21 @@
 	<link rel="stylesheet" href="./assets/css/default.css"></link>
 	<link rel="stylesheet" href="./assets/css/pvTable.css"></link>
 		
-	<!-- JQUERY CDN -->
+	<!-- JQUERY 2.1.3 CDN & FALLBACK -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>window.jquery || document.write('<script src="./frameworks/jquery.min.js"><\/script>');</script>	
 
-	<!-- BOOTSTRAP 3.3.6 JS -->
-	<script src="./frameworks/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+	<!-- BOOTSTRAP 3.3.6 JS CDN & FALLBACK -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+	</script>	
+	<script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="./frameworks/bootstrap-3.3.6-dist/js/bootstrap.min.js"><\/script>')}
+	</script>
 	
-	<!-- ANGULAR 1 JS -->
-	<script src="./frameworks/angular.min.js"></script>
+	<!-- ANGULAR 1 JS CDN & FALLBACK -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="./frameworks/angular.min.js"><\/script>');</script>	
+
+	<!-- ANGULAR SCROLL JS -->	
 	<script src="./frameworks/angular-scroll/angular-scroll.min.js"></script>	
 
 	<!-- FIREBASE JS CDN -->
@@ -67,9 +74,9 @@
                     <li du-scrollspy="learn-more">
                         <a href="#learn-more">Learn More</a>
                     </li>
-<!--                     <li du-scrollspy="contact">
-                        <a href="#contact">Contact</a>
-                    </li> -->
+                    <li du-scrollspy="about-site">
+                        <a href="#about-site">About Site</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -90,7 +97,7 @@
 		<learn-more  id="learn-more" ></learn-more>
 
 		<!-- Contact -->
-		<!-- <contact id="contact"></contact> -->
+		<about-site id="about-site"></about-site>
 	</div>
 
 	<!-- FOOTER -->
