@@ -95,13 +95,10 @@
 			// Detect URL parameter
 			vm.loc = $location.path('/').search();
 
-			// Populate JSON chart
-			vm.populatePV();
-
 			// Determine data is in FireBase
 			if(vm.loc.email != undefined && vm.loc.email != ''){	  	
 				  	
-				// Normalize Email
+				// Get Email
 			  	vm.msgBox.email = vm.loc.email;
 				//console.log(email);
 
@@ -146,7 +143,10 @@
 			else{	
 				// Load default selection JSON object 
 				vm.loadDefaultSelection('is_default');	
-			} 				
+			} 	
+
+			// Populate JSON chart
+			vm.populatePV();			
 		}; 	
 
 		/** State 1
@@ -356,9 +356,7 @@
 		vm.loadDefaultSelection = function(status){	
 
 			$http.get('/./assets/js/default-selection.json')
-			.success(function(results){
-				// Display default, no email detected
-				vm.goToState('s1', status);				
+			.success(function(results){			
 				vm.select = results;
 				vm.selected_count = 0; 
 				for (pv in vm.select){
@@ -366,6 +364,8 @@
 						if(vm.select[pv][a]) vm.selected_count++;
 					}
 				}
+				// Display default, no email detected
+				vm.goToState('s1', status);					
 			})	
 			.error(function(){
 				// Display default
@@ -378,7 +378,7 @@
 		*/
 		vm.goToState = function(state, status){
 			
-			console.log("gotostate");
+			//console.log("gotostate");
 
 			vm.current_state = state;
 			vm.current_status = status;
