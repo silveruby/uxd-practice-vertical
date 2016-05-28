@@ -78,11 +78,6 @@
 		vm.current_state = '';
 		vm.current_status = '';
 		vm.current_link = 'http://www.uxdpv.io/?email=';
-		vm.shareUrl = {
-					'facebook': '',
-					'twitter': '',
-					'linkedin': ''
-					};
 		vm.selected_count = 0;
 		vm.pv1 = [];
 		vm.pv2 = [];
@@ -91,7 +86,6 @@
 					email: '', 
 					link: '',
 					password: '' };
-
 
 		/** Init
 		*/
@@ -105,7 +99,7 @@
 				  	
 				// Get Email
 			  	vm.msgBox.email = vm.loc.email;
-				//console.log(email);
+				vm.msgBox.link = vm.current_link + vm.msgBox.email;
 
 				// Try to get results based on email
 				myFireBase.obj(vm.normalizeEmail(vm.msgBox.email)).$loaded()
@@ -113,16 +107,16 @@
 
 					if(results.$value === null){
 
-						vm.msgBox.link = vm.current_link + vm.loc.email;
-
 						// Load default selection JSON object 
 						vm.loadDefaultSelection('is_error');
 					}
-					else{				
+					else{	
+						// Go to state 4
+						vm.goToState('s4', 'is_default');
+
 						//console.log(results);
 					    vm.select = results.select;
 					    vm.msgBox.user = results.name;
-					    vm.msgBox.link = vm.current_link + vm.loc.email;
 
 					    for (pv in vm.select){
 							for (a in vm.select[pv]){
@@ -131,15 +125,10 @@
 								if(vm.select[pv][a]) vm.selected_count ++;
 							}
 						}
-
-						// Go to state 4
-						vm.goToState('s4', 'is_default');
 					}
 
 				}).catch(function(err) {
 					// Display error
-					vm.msgBox.link = vm.msgBox.link + vm.loc.email;
-
 					// Load default selection JSON object 
 					//console.log("No record for this userID");
 					vm.loadDefaultSelection('is_error');
@@ -246,15 +235,30 @@
 					// switch state
 					vm.goToState('s3', 'is_default');	
 				}, function(error) {
+
 					// If error saving JSON selection
-				  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
+			  		var msg = error.message;
+
+				  	$('.card-confirmation .error .msg').html("Cannot save selection, please contact developer.");
+				  	
 				  	// switch state
 					vm.goToState('s3', 'is_error');	
 				});
 			}).catch(function(error) {
 			  	//console.log("Error: ", error);
+			  	var msg = error.message;
+			  	console.log(msg);
+
 			  	// If error creating user account
-			  	$('.card-confirmation .error .msg').html("<strong>" + error + "</strong>");
+			  	if(msg.indexOf("already") != -1){
+			  		$('.card-confirmation .error .msg').html(msg);
+			  	}
+			  	else if(msg.indexOf("enabled") != -1){
+			  		$('.card-confirmation .error .msg').html(msg);
+			  	}
+			  	else{
+			  		$('.card-confirmation .error .msg').html("Make sure your name and email are in valid format.");	  		
+			  	}
 			  	// switch state
 				vm.goToState('s3', 'is_error');			  	
 			});			
@@ -271,7 +275,7 @@
 		    // Prevent default anchor event
 		    obj.preventDefault();
 
-		    console.log(obj);
+		    //console.log(obj);
 		    
 		    // Set title and open popup with focus on it
 		    var intWidth = '500';
@@ -298,9 +302,11 @@
 
 			}).catch(function(error) {				
 			  	//console.error("Authentication failed:", error);
+			  	var msg = error.message;
 
 			  	// PRESENTATION
-			  	$('.card-authenticate .error .msg').html("<strong>" + error + "</strong>"); 	
+			  	$('.card-authenticate .error .msg').html(msg); 
+
 			  	// switch state
 				vm.goToState('s5', 'is_error');	
 			});
@@ -384,7 +390,14 @@
 					}
 				}
 				// Display default, no email detected
-				vm.goToState('s1', status);					
+				vm.goToState('s1', status);	
+
+				// Make sure default values are cleared
+				// vm.msgBox = { user: '', 
+				// 	email: '', 
+				// 	link: '',
+				// 	password: '' };				
+
 			})	
 			.error(function(){
 				// Display default

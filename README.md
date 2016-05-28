@@ -13,6 +13,15 @@ Project: UX Design Practice Verticals
 
 ## Updates
 
+**5/28/2016**
+
+[UXDPV.io](http://www.uxdpv.io) is LIVE and in beta. 
+
+However, the most annoying thing happened right in the middle of deployment. 
+
+Firebase is completely released and redeployed with Google on May 18th 2016. Since I'm using AngularFire 1.2.0 with FireBase 2.4.2, the code does not work for new Firebase consoles. This is a headache but it'll have to be resolved when AngularFire 2.0 comes out. See all the [discussions about Firebase + AngularFire](https://github.com/firebase/angularfire/issues/718) on github. 
+
+
 **3/1/2015**
 
 I've decided to use AngularJS to make use of directives and controller features. 
