@@ -1,14 +1,17 @@
 Project: UX Design Practice Verticals
 
+URL: [http://www.uxdpv.io](http://www.uxdpv.io)
+
 ---
 
 ## Technology
 
-- [AngularJS 1](https://angularjs.org/) (Javascript Framework)
-- [Bootstrap v3.3.6](http://getbootstrap.com/) (Front-End Framework)
-- [Firebase](https://firebase.google.com/) (Database Platform)
-- [Angular-Scroll](https://github.com/oblador/angular-scroll) (AngularJS plugin)
-- [Simple Sharing Buttons](https://simplesharingbuttons.com/)
+- [AngularJS 1](https://angularjs.org/) - Javascript Framework
+- [Bootstrap v3.3.6](http://getbootstrap.com/) - Front-End Framework
+- [Firebase](https://firebase.google.com/) - Database Platform
+- [Angular Scroll](https://github.com/oblador/angular-scroll) - AngularJS plugin
+- [Simple Sharing Buttons](https://simplesharingbuttons.com/) - Social Share Buttons
+
 ---
 
 ## Updates
@@ -19,7 +22,9 @@ Project: UX Design Practice Verticals
 
 However, the most annoying thing happened right in the middle of deployment. 
 
-Firebase is completely released and redeployed with Google on May 18th 2016. Since I'm using AngularFire 1.2.0 with FireBase 2.4.2, the code does not work for new Firebase consoles. This is a headache but it'll have to be resolved when AngularFire 2.0 comes out. See all the [discussions about Firebase + AngularFire](https://github.com/firebase/angularfire/issues/718) on github. 
+Firebase is completely released and redeployed with Google on May 18th 2016. Since I'm using AngularFire 1.2.0 with FireBase 2.4.2, the code does not work for new Firebase consoles. This is a headache but it'll have to be resolved when AngularFire 2.0 comes out. 
+
+See all the [discussions about Firebase + AngularFire](https://github.com/firebase/angularfire/issues/718) on github. 
 
 
 **3/1/2015**
