@@ -8,7 +8,7 @@ Project: UX Design Practice Verticals
 - [Bootstrap v3.3.6](http://getbootstrap.com/) (Front-End Framework)
 - [Firebase](https://firebase.google.com/) (Database Platform)
 - [Angular-Scroll](https://github.com/oblador/angular-scroll) (AngularJS plugin)
-
+- [Simple Sharing Buttons](https://simplesharingbuttons.com/)
 ---
 
 ## Updates

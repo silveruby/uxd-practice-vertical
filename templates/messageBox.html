@@ -60,7 +60,31 @@
             <div class="default">
                 <h1>{{ msgBox.user }}'s Practice Verticals</h1>
                 <p><mark>{{ msgBox.link }}</mark></p>
-                <p>Share on Twitter, Facebook or LinkedIn</p>
+                <p>Share this on</p>            
+                <ul class="share-buttons">
+                    <li><a class="share" 
+                        ng-click="popShareUrl($event)"
+                        href="http://twitter.com/share?url={{ msgBox.link }}"
+                        title="Facebook Share"
+                        target="_blank"><img src="/assets/images/social_flat_rounded_rects_svg/Twitter.svg">
+                    </a></li>
+                    <li><a class="share" 
+                        ng-click="popShareUrl($event)"                    
+                        href="https://www.facebook.com/sharer/sharer.php?u={{ msgBox.link }}"
+                        title="Facebook Share"
+                        target="_blank"><img src="/assets/images/social_flat_rounded_rects_svg/Facebook.svg">
+                    </a></li>
+                    <li><a class="share" 
+                        ng-click="popShareUrl($event)"   
+                        href="https://www.linkedin.com/shareArticle?mini=true&url={{ msgBox.link }}&title=My%20UXDPV&source=http%3A//www.uxdpv.io"
+                        title="LinkedIn Share"
+                        target="_blank"><img src="/assets/images/social_flat_rounded_rects_svg/LinkedIn.svg">
+                    </a></li>
+                    <li><a href="mailto:?subject=UXDPV.io&body=Create%20a%20Practice%20Verticals%20chart%20and%20share%20it%20with%20the%20world!:%20http%3A%2F%2Fuxdpv.io" 
+                        target="_blank" 
+                        title="Email"><img src="/assets/images/social_flat_rounded_rects_svg/Email.svg">
+                    </a></li>
+                </ul>
                 <a href="http://www.uxdpv.io">Create your own Practice Verticals</a>
                     | 
                 <a href ng-click="goToState('s5', 'is_default')">Edit this chart</a>

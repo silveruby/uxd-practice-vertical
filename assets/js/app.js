@@ -77,7 +77,12 @@
 		var vm = $scope;
 		vm.current_state = '';
 		vm.current_status = '';
-		vm.current_link = 'http://www.uxdpv.io/?email='
+		vm.current_link = 'http://www.uxdpv.io/?email=';
+		vm.shareUrl = {
+					'facebook': '',
+					'twitter': '',
+					'linkedin': ''
+					};
 		vm.selected_count = 0;
 		vm.pv1 = [];
 		vm.pv2 = [];
@@ -261,7 +266,21 @@
 
 		/** State 4
 		* Show user's link and share and edit options
-		*/		
+		*/	
+		vm.popShareUrl = function(obj){
+		    // Prevent default anchor event
+		    obj.preventDefault();
+
+		    console.log(obj);
+		    
+		    // Set title and open popup with focus on it
+		    var intWidth = '500';
+			    intHeight = '400';
+			    strResize = 'no';
+		    	strTitle = obj.title,
+		        strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,            
+		        objWindow = window.open(obj.currentTarget, strTitle, strParam).focus();
+		};
 
 		/** State 5
 		* Authenticate email and password 
