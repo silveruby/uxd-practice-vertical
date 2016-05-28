@@ -128,12 +128,13 @@
             ng-class="{ 'fadein' : current_state == 's6' }">     
             <div class="default form">
                 <h1>Can’t remember your password?</h1>
-                <p>Would you like us to send you the password reset link?</p>
-                 <form>
+                <p>Your default password is 'uxdpv' but you can reset to a new one by request.</p>
+                <p><a href="mailto:zhengsan@gmail.com?Subject=Hello">Email the developer to reset password</a></p>
+<!--                  <form>
                     <div class="form-group">
                         <button type="submit" class="form-control" ng-click="resetUserPassword()">Reset Password via Email</button>
                     </div>
-                </form>
+                </form> -->
                 <p><a href ng-click="goToState('s4', 'is_default')">Go back to the chart</a></p>             
             </div>
             <div class="success">

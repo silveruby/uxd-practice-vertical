@@ -247,14 +247,15 @@
 			}).catch(function(error) {
 			  	//console.log("Error: ", error);
 			  	var msg = error.message;
-			  	console.log(msg);
+			  	//console.log(msg);
 
 			  	// If error creating user account
 			  	if(msg.indexOf("already") != -1){
+			  		msg = "<p>" + msg + "</p><p>Check url <mark>" + vm.msgBox.link + "</mark>";
 			  		$('.card-confirmation .error .msg').html(msg);
 			  	}
 			  	else if(msg.indexOf("enabled") != -1){
-			  		$('.card-confirmation .error .msg').html(msg);
+			  		$('.card-confirmation .error .msg').html("Cannot create user, please contact developer.");
 			  	}
 			  	else{
 			  		$('.card-confirmation .error .msg').html("Make sure your name and email are in valid format.");	  		
