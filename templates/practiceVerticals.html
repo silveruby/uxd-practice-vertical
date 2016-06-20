@@ -9,7 +9,7 @@
 			<div class="col-lg-3" ng-repeat="practiceVertical in pv1">
 				<table class="table table-hover {{ practiceVertical['ClassName'] }}">
 					<thead>
-						<tr data-toggle="popover" data-placement="top" data-content="{{ practiceVertical['Definition'] }}">
+						<tr data-placement="top" title="{{ practiceVertical['Definition'] }}" onmouseenter="$(this).tooltip('show')">
 							<th>{{ practiceVertical['Name'] }}</th>
 						</tr>
 					</thead>
@@ -27,13 +27,13 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</div> <!-- end row -->
 	<div class="col-md-6">
 		<div class="row no-pad">
 			<div class="col-lg-3" ng-repeat="practiceVertical in pv2">
 				<table class="table table-hover {{ practiceVertical['ClassName'] }}">
 					<thead>
-						<tr data-toggle="popover" data-placement="top" data-content="{{ practiceVertical['Definition'] }}">
+						<tr data-placement="top" title="{{ practiceVertical['Definition'] }}" onmouseenter="$(this).tooltip('show')">
 							<th>{{ practiceVertical['Name'] }}</th>
 						</tr>
 					</thead>
@@ -51,5 +51,10 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</div> <!-- end row -->
+
+	<div class="scroll-arrow col-xs-12 text-center">
+        	UX Design Practice Verticals v1.3.0 © 2011-2013 <a class="text-small" href="http://www.methodbrain.com">Nathaniel Davis</a>.<br />
+        	All Rights Reserved. Reproduced with permission.
+    </div>	
 </div>

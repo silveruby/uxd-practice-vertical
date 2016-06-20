@@ -54,15 +54,13 @@
 	uxdpv.factory('myFireBase', ['$firebaseObject', '$firebaseAuth', 
 		function($firebaseObject, $firebaseAuth) {
 
-		var fireBaseProject= 'https://torrid-inferno-2523.firebaseio.com/'
 		return {
 			auth : function(){
-				var myFirebaseRef = new Firebase(fireBaseProject);
-				return $firebaseAuth(myFirebaseRef);
+				return $firebaseAuth();
 			},
 			obj  : function(userNormalizedEmail){
-				var myFirebaseRef = new Firebase(fireBaseProject + userNormalizedEmail);				
-				return $firebaseObject(myFirebaseRef);
+				var ref = firebase.database().ref().child(userNormalizedEmail);				
+				return $firebaseObject(ref);
 			}
 		};
 	}]);
@@ -204,17 +202,17 @@
 			// This is done via AngularJS Form... TBD
 			
 			// Update message box variables
-			vm.msgBox.password = 'uxdpv'
+			vm.msgBox.password = vm.newPassword;
 			vm.msgBox.email = vm.newEmail;
 			vm.msgBox.user = vm.newName;
 			vm.msgBox.link = vm.current_link + vm.msgBox.email;
 
 			// Step 1: Create user
 			auth = myFireBase.auth();
-			auth.$createUser({
-				email: vm.msgBox.email,
-				password: vm.msgBox.password
-			}).then(function(userData) { 
+			auth.$createUserWithEmailAndPassword(
+				vm.msgBox.email, // email
+				vm.msgBox.password // password
+			).then(function(userData) { 
 
 				// Step 2: Use userID to save selection
 			  	//console.log("User " + userData.uid + " created successfully!");
@@ -254,10 +252,14 @@
 			  		msg = "<p>" + msg + "</p><p>Check url <mark>" + vm.msgBox.link + "</mark>";
 			  		$('.card-confirmation .error .msg').html(msg);
 			  	}
+			  	else if(msg.indexOf("password") != -1){
+					$('.card-confirmation .error .msg').html(msg);  		
+			  	}
 			  	else if(msg.indexOf("enabled") != -1){
 			  		$('.card-confirmation .error .msg').html("Cannot create user, please contact developer.");
-			  	}
+			  	}		  	
 			  	else{
+			  		console.log(msg);
 			  		$('.card-confirmation .error .msg').html("Make sure your name and email are in valid format.");	  		
 			  	}
 			  	// switch state
@@ -291,12 +293,11 @@
 		* Authenticate email and password 
 		*/			
 		vm.authenticateUser = function(){
-			//console.log("User email: " + vm.msgBox.email);	
 
-			myFireBase.auth().$authWithPassword({
-				email: vm.msgBox.email,
-			  	password: vm.userPassword
-			}).then(function(authData) {
+			myFireBase.auth().$signInWithEmailAndPassword(
+				vm.msgBox.email, 
+				vm.userPassword
+			).then(function(authData) {			
 
 			  	// Go to state modify
 			  	vm.goToState('s7', 'is_default');
@@ -318,9 +319,9 @@
 		vm.resetUserPassword = function(){
 			//console.log("User password: " + vm.msgBox.email);	
 
-			myFireBase.auth().$resetPassword({
-				email: vm.msgBox.email
-			}).then(function(authData) {
+			myFireBase.auth().$sendPasswordResetEmail(
+				vm.msgBox.email
+			).then(function(authData) {
 			  	// Update with confirmation  message
 			  	$('.card-reset .success').show();
 			  	$('.card-reset .default').hide();
@@ -329,8 +330,8 @@
 			  	// Update with confirmation  message
 			  	$('.card-reset .error').show();
 			  	$('.card-reset .default').hide();			
-			});
-		};		
+			});	
+		};
 
 		/** State 7
 		* Update or cancel changes 
@@ -420,7 +421,7 @@
 		*/
 		vm.normalizeEmail = function (email) {
 		    return email.replace(/[^a-zA-Z0-9]/g, '-');
-		} 	
+		}; 	
 
 		/** HELPER function
 		* Generate random password
@@ -433,7 +434,7 @@
 		        retVal += charset.charAt(Math.floor(Math.random() * n));
 		    }
 		    return retVal;
-		} // end helper function for generatePassword
+		}; // end helper function for generatePassword
 
 		angular.element(document).ready(function () {
 	        vm.init();

@@ -29,15 +29,27 @@
 	</script>
 	
 	<!-- ANGULAR 1 JS CDN & FALLBACK -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 	<script>window.angular || document.write('<script src="./frameworks/angular.min.js"><\/script>');</script>	
 
 	<!-- ANGULAR SCROLL JS -->	
 	<script src="./frameworks/angular-scroll/angular-scroll.min.js"></script>	
 
-	<!-- FIREBASE JS CDN -->
-	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+	<!-- FIREBASE JS -->
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyA63Cnfye1WFu3SM6MwEZKkVSduJA5x6QQ",
+	    authDomain: "uxd-pv.firebaseapp.com",
+	    databaseURL: "https://uxd-pv.firebaseio.com",
+	    storageBucket: "uxd-pv.appspot.com",
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	
+	<!-- ANGULARFIRE JS -->
+	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 
 </head>
 <body ng-app="uxdpv" 
@@ -58,7 +70,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll"  
-                	href="#page-top">UXDPV.io <sup>Beta</sup></a>
+                	href="#page-top">UXDPV.io</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
